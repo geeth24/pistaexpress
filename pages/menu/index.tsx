@@ -92,7 +92,6 @@ function Menu() {
                                 <Select
                                     label="Category"
                                     placeholder="Select category"
-                                    searchable
                                     clearable
                                     data={[
                                         {
