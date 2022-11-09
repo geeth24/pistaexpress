@@ -1,4 +1,5 @@
 import { createStyles, Container, Title, Text, Button } from "@mantine/core"
+import Link from "next/link"
 
 const useStyles = createStyles((theme) => ({
     root: {
@@ -101,17 +102,18 @@ function Hero() {
                             Live Kebabs, Chat, Dosa and all of your favorite
                             Indian dishes.
                         </Text>
-
-                        <Button
-                            variant="gradient"
-                            gradient={{ from: "lime", to: "green" }}
-                            size="md"
-                            className={classes.control}
-                            mt={40}
-                            radius="xl"
-                        >
-                            Menu
-                        </Button>
+                        <Link href="/menu">
+                            <Button
+                                variant="gradient"
+                                gradient={{ from: "lime", to: "green" }}
+                                size="md"
+                                className={classes.control}
+                                mt={40}
+                                radius="xl"
+                            >
+                                Menu
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </Container>

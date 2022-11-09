@@ -1,4 +1,4 @@
-import { createStyles, Anchor, Group, ActionIcon, Text } from "@mantine/core"
+import { createStyles, Anchor, Group, ActionIcon, Image } from "@mantine/core"
 import {
     IconBrandYoutube,
     IconBrandInstagram,
@@ -18,14 +18,12 @@ const useStyles = createStyles((theme) => ({
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: `${theme.spacing.md}px ${theme.spacing.md}px`,
-
-        [theme.fn.smallerThan("sm")]: {
-            flexDirection: "column",
-        },
+        flexDirection: "column",
     },
 
     links: {
+        padding: `${theme.spacing.md}px ${theme.spacing.md}px`,
+
         [theme.fn.smallerThan("sm")]: {
             marginTop: theme.spacing.lg,
             marginBottom: theme.spacing.sm,
@@ -55,19 +53,30 @@ function Footer({ links }: FooterCenteredProps) {
     return (
         <div className={classes.footer}>
             <div className={classes.inner}>
-                <Group>
-                    <Text size="xl" weight={700} color="lime">
-                        Pista Express
-                    </Text>
+                <Group
+                    sx={{
+                        marginTop: 20,
+                    }}
+                >
+                    <Image
+                        src="/Pista Express text.png"
+                        width={200}
+                        height={50}
+                    />
                 </Group>
 
                 <Group className={classes.links}>{items}</Group>
 
-                <Group spacing="xs" position="right" noWrap >
+                <Group
+                    spacing="xs"
+                    position="right"
+                    noWrap
+                    style={{ marginBottom: 20 }}
+                >
                     <ActionIcon size="lg" variant="default" radius="xl">
                         <IconBrandFacebook size={18} stroke={1.5} />
                     </ActionIcon>
-                  
+
                     <ActionIcon size="lg" variant="default" radius="xl">
                         <IconBrandInstagram size={18} stroke={1.5} />
                     </ActionIcon>

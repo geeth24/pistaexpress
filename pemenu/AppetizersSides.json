@@ -1,0 +1,126 @@
+[
+    {
+        "title": "Veg Samosa- (2 Pieces) ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Spinach Onion Pakora ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Onion Stuffed Mirchi Bajji ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Cut Mirchi ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Honey Chilli Califlower",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Gobi / Paneer 65 (Dry)",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Chilli Panner /Babycorn/ Califlower",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Babycorn/Gobi/Panner Manchuria ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Chilli Panner Samosa",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Veg-555",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Onion Samosa (Irani Samosa) ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Chicken Kheema Samosa",
+        "type": "Chicken"
+    },
+    {
+        "title": "Chicken-65",
+        "type": "Chicken"
+    },
+    {
+        "title": "Chicken-555",
+        "type": "Chicken"
+    },
+    {
+        "title": "Chilli Chicken ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Chicken Manchuria ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Madras-65",
+        "type": "Chicken"
+    },
+    {
+        "title": "Guntur Kodi Vepudu ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Chicken Pepper Fry",
+        "type": "Chicken"
+    },
+    {
+        "title": "Ginger Chicken",
+        "type": "Chicken"
+    },
+    {
+        "title": "Curry Leaf Chicken ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Chicken Pepper Fry ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Goat Sukka ",
+        "type": "GoatLamb"
+    },
+    {
+        "title": "Goat Pepper Fry ",
+        "type": "GoatLamb"
+    },
+    {
+        "title": "House Special Fish Fry ",
+        "type": "SeaFood"
+    },
+    {
+        "title": "Apollo Fish",
+        "type": "SeaFood"
+    },
+    {
+        "title": "Shrimp-65",
+        "type": "SeaFood"
+    },
+    {
+        "title": "Shrimp Pepper Fry ",
+        "type": "SeaFood"
+    },
+    {
+        "title": "Chilli Shrimp ",
+        "type": "SeaFood"
+    },
+    {
+        "title": "Egg Bonda ",
+        "type": "Eggtarian"
+    },
+    {
+        "title": "Chilli Egg ",
+        "type": "Eggtarian"
+    }
+]

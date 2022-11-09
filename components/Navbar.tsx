@@ -12,6 +12,7 @@ import {
     useMantineColorScheme,
     Switch,
     useMantineTheme,
+    ActionIcon,
 } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { IconMoonStars, IconSun } from "@tabler/icons"
@@ -115,6 +116,7 @@ function Navbar({ links }: NavbarProps) {
     const [active, setActive] = useState(router.pathname)
     const { classes, cx } = useStyles()
     const { colorScheme, toggleColorScheme } = useMantineColorScheme()
+    const dark = colorScheme === "dark"
     const theme = useMantineTheme()
 
     const items = links.map((link) => (
@@ -144,7 +146,7 @@ function Navbar({ links }: NavbarProps) {
                 marginTop: -HEADER_HEIGHT,
                 backgroundColor:
                     theme.colorScheme === "dark" ? "#1a1b1ede" : "#ffffffde",
-                // backdropFilter: "blur(10px)",
+                backdropFilter: "blur(10px)",
             }}
         >
             <Container className={classes.inner} fluid>
@@ -156,9 +158,6 @@ function Navbar({ links }: NavbarProps) {
                         size="sm"
                     />
                     <Image src="/PistaExpress.png" width={75} height={75} />
-                    <Text size="xl" weight={700} color="lime">
-                        Pista Express
-                    </Text>
                 </Group>
                 <Group className={classes.links} spacing={5}>
                     {items}
@@ -176,9 +175,9 @@ function Navbar({ links }: NavbarProps) {
                             sx={{
                                 backgroundColor:
                                     theme.colorScheme === "dark"
-                                        ? "#1a1b1eac"
-                                        : "#ffffffac",
-                                backdropFilter: "blur(35px)",
+                                        ? "#1a1b1e"
+                                        : "#ffffff",
+                                // backdropFilter: "blur(35px)",
                                 zIndex: 9,
                             }}
                         >
@@ -187,30 +186,24 @@ function Navbar({ links }: NavbarProps) {
                     )}
                 </Transition>
                 <Group position="center">
-                    <Button radius="xl" sx={{ height: 30 }}>
-                        Menu
-                    </Button>
-                    <Group position="center" mb={15}>
-                        <Switch
-                            checked={colorScheme === "dark"}
-                            onChange={() => toggleColorScheme()}
-                            size="lg"
-                            onLabel={
-                                <IconSun
-                                    color={theme.white}
-                                    size={20}
-                                    stroke={1.5}
-                                />
-                            }
-                            offLabel={
-                                <IconMoonStars
-                                    color={theme.colors.gray[6]}
-                                    size={20}
-                                    stroke={1.5}
-                                />
-                            }
-                        />
-                    </Group>
+                    <Link href="/menu">
+                        <Button radius="xl" sx={{ height: 30 }}>
+                            Menu
+                        </Button>
+                    </Link>
+                    <ActionIcon
+                        size="lg"
+                        color="lime"
+                        onClick={() => toggleColorScheme()}
+                        title="Toggle color scheme"
+                        radius="xl"
+                    >
+                        {dark ? (
+                            <IconSun size={18} />
+                        ) : (
+                            <IconMoonStars size={18} />
+                        )}
+                    </ActionIcon>
                 </Group>
             </Container>
         </Header>
