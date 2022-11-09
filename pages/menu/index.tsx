@@ -151,6 +151,7 @@ function Menu() {
                                         p="lg"
                                         radius="md"
                                         withBorder
+                                        key={item.title}
                                     >
                                         <Group position="apart" mt="md" mb="xs">
                                             <Badge
