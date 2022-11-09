@@ -7,7 +7,7 @@ const useStyles = createStyles((theme) => ({
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundImage:
-            "linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #213801d0 70%), url('/PistaHouse-1-69 Large.jpeg')",
+            "linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #194f24d0 70%), url('/PistaHouse-1-69 Large.jpeg')",
         paddingTop: theme.spacing.xl * 6,
         paddingBottom: theme.spacing.xl * 6,
     },
@@ -87,7 +87,7 @@ function Hero() {
                                 component="span"
                                 inherit
                                 variant="gradient"
-                                gradient={{ from: "lime.2", to: "lime.4" }}
+                                gradient={{ from: "green.2", to: "green.4" }}
                             >
                                 Fast & <br /> Authentic Food
                             </Text>{" "}
@@ -105,7 +105,7 @@ function Hero() {
                         <Link href="/menu">
                             <Button
                                 variant="gradient"
-                                gradient={{ from: "lime", to: "green" }}
+                                gradient={{ from: "green", to: "green" }}
                                 size="md"
                                 className={classes.control}
                                 mt={40}

@@ -122,10 +122,10 @@ function Menu() {
                         </Drawer>
                         <Title className={classes.title}>Menu</Title>
                         <Group className={classes.subtitle}>
-                            <Text color="lime">Appetizers & Sides</Text>
+                            <Text color="green">Appetizers & Sides</Text>
                             <ActionIcon
                                 size="lg"
-                                color="lime"
+                                color="green"
                                 onClick={() => setOpened(true)}
                             >
                                 <IconFilter />
@@ -154,7 +154,7 @@ function Menu() {
                                     >
                                         <Group position="apart" mt="md" mb="xs">
                                             <Badge
-                                                color="lime"
+                                                color="green"
                                                 variant="light"
                                                 size="xs"
                                             >
@@ -163,7 +163,7 @@ function Menu() {
                                         </Group>
                                         <Text
                                             size="md"
-                                            color="lime"
+                                            color="green"
                                             sx={{
                                                 fontWeight: "bold",
                                             }}

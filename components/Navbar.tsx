@@ -88,11 +88,11 @@ const useStyles = createStyles((theme) => ({
         "&, &:hover": {
             backgroundColor: theme.fn.variant({
                 variant: "light",
-                color: "lime",
+                color: "green",
             }).background,
             color: theme.fn.variant({
                 variant: "light",
-                color: "lime",
+                color: "green",
             }).color,
         },
     },
@@ -193,7 +193,7 @@ function Navbar({ links }: NavbarProps) {
                     </Link>
                     <ActionIcon
                         size="lg"
-                        color="lime"
+                        color="green"
                         onClick={() => toggleColorScheme()}
                         title="Toggle color scheme"
                         radius="xl"
