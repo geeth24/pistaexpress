@@ -11,7 +11,7 @@ const renderPhoto: RenderPhoto = ({
     <div className="render-div">
         <Text
             size="sm"
-            color="green"
+            color="teal"
             sx={{
                 fontWeight: "bold",
             }}
@@ -133,7 +133,7 @@ const Home = () => {
             <Title
                 align="center"
                 sx={{ fontWeight: "bold" }}
-                color="green"
+                color="teal"
                 mt={60}
             >
                 Catering

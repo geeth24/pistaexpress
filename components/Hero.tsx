@@ -87,7 +87,10 @@ function Hero() {
                                 component="span"
                                 inherit
                                 variant="gradient"
-                                gradient={{ from: "green.2", to: "green.4" }}
+                                gradient={{
+                                    from: "teal.2",
+                                    to: "teal.4",
+                                }}
                             >
                                 Fast & <br /> Authentic Food
                             </Text>{" "}
@@ -105,7 +108,7 @@ function Hero() {
                         <Link href="/menu">
                             <Button
                                 variant="gradient"
-                                gradient={{ from: "green", to: "green" }}
+                                gradient={{ from: "teal", to: "teal" }}
                                 size="md"
                                 className={classes.control}
                                 mt={40}
