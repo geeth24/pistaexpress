@@ -1,12 +1,22 @@
-import { createStyles, Anchor, Group, ActionIcon, Image } from "@mantine/core"
 import {
-    IconBrandYoutube,
-    IconBrandInstagram,
-    IconBrandFacebook,
+    createStyles,
+    Container,
+    Group,
+    ActionIcon,
+    Text,
+    useMantineColorScheme,
+    Image,
+    Stack,
+} from "@mantine/core"
+import {
+    IconBrandNextjs,
+    IconBrandMantine,
+    IconBrandFramer,
 } from "@tabler/icons"
 
 const useStyles = createStyles((theme) => ({
     footer: {
+        marginTop: 30,
         borderTop: `1px solid ${
             theme.colorScheme === "dark"
                 ? theme.colors.dark[5]
@@ -19,65 +29,98 @@ const useStyles = createStyles((theme) => ({
         justifyContent: "space-between",
         alignItems: "center",
         flexDirection: "column",
+
+        maxWidth: 1200,
+        paddingTop: theme.spacing.xl,
+        paddingBottom: theme.spacing.xl,
+
+        [theme.fn.smallerThan("xs")]: {},
     },
 
     links: {
-        padding: `${theme.spacing.md}px ${theme.spacing.md}px`,
-
-        [theme.fn.smallerThan("sm")]: {
-            marginTop: theme.spacing.lg,
-            marginBottom: theme.spacing.sm,
+        [theme.fn.smallerThan("xs")]: {
+            marginTop: theme.spacing.md,
         },
     },
 }))
 
-interface FooterCenteredProps {
-    links: { link: string; label: string }[]
-}
-
-function Footer({ links }: FooterCenteredProps) {
+function Footer() {
     const { classes } = useStyles()
-    const items = links.map((link) => (
-        <Anchor<"a">
-            color="dimmed"
-            key={link.label}
-            href={link.link}
-            sx={{ lineHeight: 1 }}
-            onClick={(event) => event.preventDefault()}
-            size="lg"
-        >
-            {link.label}
-        </Anchor>
-    ))
-
+    const { colorScheme } = useMantineColorScheme()
+    const dark = colorScheme === "dark"
     return (
         <div className={classes.footer}>
-            <div className={classes.inner}>
-                <Group
-                    sx={{
-                        marginTop: 20,
-                    }}
-                >
+            <Container className={classes.inner}>
+                <Group spacing={5} position="center">
                     <Image src="/PistaExpress250.png" width={150} height={75} />
                 </Group>
 
-                <Group className={classes.links}>{items}</Group>
+                <Group spacing={5} position="center">
+                    <Stack spacing="xs" align="center">
+                        <Text
+                            size="sm"
+                            weight={500}
+                            color="lime"
+                            sx={{
+                                fontFamily: "Lato",
+                            }}
+                        >
+                            © {new Date().getFullYear()} Pista Express
+                        </Text>
+                        <Group spacing="xs">
+                            <Text size="sm" weight={500} color="lime">
+                                Built with {` `}
+                            </Text>
+                            <Group spacing={5}>
+                                <ActionIcon
+                                    component="a"
+                                    size="sm"
+                                    color="lime"
+                                    style={{ marginTop: -2 }}
+                                    href="https://nextjs.org/"
+                                >
+                                    <IconBrandNextjs />
+                                </ActionIcon>
+                                {` `}
+                                <ActionIcon
+                                    component="a"
+                                    size="sm"
+                                    color="lime"
+                                    style={{ marginTop: -2 }}
+                                    href="https://mantine.dev/"
+                                >
+                                    <IconBrandMantine />
+                                </ActionIcon>
+                                {` `}
+                                <ActionIcon
+                                    component="a"
+                                    size="sm"
+                                    color="lime"
+                                    style={{ marginTop: -2 }}
+                                    href="https://www.framer.com/motion"
+                                >
+                                    <IconBrandFramer />
+                                </ActionIcon>
 
-                <Group
-                    spacing="xs"
-                    position="right"
-                    noWrap
-                    style={{ marginBottom: 20 }}
-                >
-                    <ActionIcon size="lg" variant="default" radius="xl">
-                        <IconBrandFacebook size={18} stroke={1.5} />
-                    </ActionIcon>
-
-                    <ActionIcon size="lg" variant="default" radius="xl">
-                        <IconBrandInstagram size={18} stroke={1.5} />
-                    </ActionIcon>
+                                <Text size="sm" weight={500} color="lime">
+                                    {` `} by {` `}
+                                </Text>
+                                <Text
+                                    size="sm"
+                                    weight={500}
+                                    color="lime"
+                                    onClick={() => {
+                                        window.open("https://geethg.com")
+                                    }}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    Geeth Gunnampalli
+                                </Text>
+                            </Group>
+                        </Group>
+                    </Stack>
                 </Group>
-            </div>
+            </Container>
         </div>
     )
 }
