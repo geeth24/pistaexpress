@@ -10,7 +10,7 @@ export default class _Document extends Document {
         return (
             <Html>
                 <Head>
-                    <link rel="icon" href="/PistaExpress3000.jpg" />
+                    <link rel="icon" href="/PistaExpress250.png" />
                     <link
                         rel="preconnect"
                         href="https://fonts.googleapis.com"
@@ -20,23 +20,23 @@ export default class _Document extends Document {
                         href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap"
                         rel="stylesheet"
                     />
-                    {/* <link rel="icon" href="/CameraLight.png" />
-                    <link rel="apple-touch-icon" href="/CameraLight.png" />
-                    <meta property="og:title" content="Reactive Shots" />
+                    <link rel="icon" href="/PistaExpress250.png" />
+                    <link rel="apple-touch-icon" href="/PistaExpress250.png" />
+                    <meta property="og:title" content="Pista Express" />
                     <meta
                         name="image"
                         property="og:image"
-                        content="/RSLogo.jpg"
+                        content="/PistaExpress3000.jpg"
                     />
-                    <meta name="author" content="Geeth Gunnampalli" />
+                    <meta name="author" content="Pista Express" />
                     <meta
                         property="og:description"
-                        content="Event, Portrait, and Landscape Photography"
+                        content="We are dedicated to providing you with the finest Indian food and catering. Browse our menu and call to order in advance."
                     />
                     <meta
                         property="og:url"
-                        content="https://reactiveshots.com"
-                    /> */}
+                        content="https://pistaexpress.com"
+                    />
                 </Head>
                 <body>
                     <Main />

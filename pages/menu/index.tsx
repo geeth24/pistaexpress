@@ -26,6 +26,7 @@ import KebabsTandoor from "../../pemenu/KebabsTandoor.json"
 import Desserts from "../../pemenu/Desserts.json"
 import Drinks from "../../pemenu/Drinks.json"
 import { Link } from "react-scroll"
+import Head from "next/head"
 
 const LINK_HEIGHT = 38
 const INDICATOR_SIZE = 10
@@ -139,6 +140,9 @@ function Menu() {
 
     return (
         <>
+            <Head>
+                <title>Menu | Pista Express</title>
+            </Head>
             <Container className={classes.root}>
                 <ActionIcon
                     size="lg"
