@@ -145,7 +145,7 @@ function Menu() {
             </Head>
             <Container className={classes.root}>
                 <ActionIcon
-                    size="lg"
+                    size="xl"
                     color="lime"
                     variant="filled"
                     radius="xl"
