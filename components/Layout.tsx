@@ -42,26 +42,7 @@ const Layout = ({ children }: LayoutProps) => {
                     ]}
                 />
                 {children}
-                <Footer
-                    links={[
-                        {
-                            link: "/",
-                            label: "Home",
-                        },
-                        {
-                            link: "/menu",
-                            label: "Menu",
-                        },
-                        {
-                            link: "/catering",
-                            label: "Catering",
-                        },
-                        {
-                            link: "/contact",
-                            label: "Contact",
-                        },
-                    ]}
-                />
+                <Footer />
             </Suspense>
         </>
     )
