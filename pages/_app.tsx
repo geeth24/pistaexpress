@@ -52,7 +52,15 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                         fontFamily: "Philosopher, sans-serif",
                         headings: { fontFamily: "Philosopher, sans-serif" },
                         colorScheme: colorScheme,
-                        primaryColor: "teal",
+                        primaryColor: "lime",
+                        globalStyles: (theme) => ({
+                            ".active": {
+                                fontWeight: 500,
+                                color: theme.colors[theme.primaryColor][
+                                    theme.colorScheme === "dark" ? 3 : 7
+                                ],
+                            },
+                        }),
                         //dsiable scrollbars
                     }}
                 >

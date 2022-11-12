@@ -19,7 +19,7 @@ import { IconMoonStars, IconSun } from "@tabler/icons"
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
-const HEADER_HEIGHT = 60
+const HEADER_HEIGHT = 70
 
 const useStyles = createStyles((theme) => ({
     inner: {
@@ -27,6 +27,7 @@ const useStyles = createStyles((theme) => ({
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        maxWidth: 1200,
     },
 
     links: {
@@ -43,7 +44,7 @@ const useStyles = createStyles((theme) => ({
 
     dropdown: {
         position: "absolute",
-        top: 60,
+        top: HEADER_HEIGHT,
         left: 0,
         right: 0,
         // zIndex: 999,
@@ -88,11 +89,11 @@ const useStyles = createStyles((theme) => ({
         "&, &:hover": {
             backgroundColor: theme.fn.variant({
                 variant: "light",
-                color: "teal",
+                color: "lime",
             }).background,
             color: theme.fn.variant({
                 variant: "light",
-                color: "teal",
+                color: "lime",
             }).color,
         },
     },
@@ -145,8 +146,8 @@ function Navbar({ links }: NavbarProps) {
                 top: 0,
                 marginTop: -HEADER_HEIGHT,
                 backgroundColor:
-                    theme.colorScheme === "dark" ? "#1a1b1ede" : "#ffffffde",
-                backdropFilter: "blur(10px)",
+                    theme.colorScheme === "dark" ? "#1a1b1ed2" : "#ffffffd2",
+                backdropFilter: "blur(15px)",
             }}
         >
             <Container className={classes.inner} fluid>
@@ -157,7 +158,7 @@ function Navbar({ links }: NavbarProps) {
                         className={classes.burger}
                         size="sm"
                     />
-                    <Image src="/PistaExpress.png" width={75} height={75} />
+                    <Image src="/PistaExpress250.png" width={150} height={75} />
                 </Group>
                 <Group className={classes.links} spacing={5}>
                     {items}
@@ -193,7 +194,7 @@ function Navbar({ links }: NavbarProps) {
                     </Link>
                     <ActionIcon
                         size="lg"
-                        color="teal"
+                        color="lime"
                         onClick={() => toggleColorScheme()}
                         title="Toggle color scheme"
                         radius="xl"

@@ -11,7 +11,7 @@ const renderPhoto: RenderPhoto = ({
     <div className="render-div">
         <Text
             size="sm"
-            color="teal"
+            color="lime"
             sx={{
                 fontWeight: "bold",
             }}
@@ -128,12 +128,12 @@ const Home = () => {
     return (
         <>
             <Head>
-                <title>Catering | Pista House Texas</title>
+                <title>Catering | Pista Express</title>
             </Head>
             <Title
                 align="center"
                 sx={{ fontWeight: "bold" }}
-                color="teal"
+                color="lime"
                 mt={60}
             >
                 Catering

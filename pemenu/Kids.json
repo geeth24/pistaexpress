@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Fries",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Kids Veg Fried Rice",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Chicken Nuggets",
+        "type": "Chicken"
+    },
+    {
+        "title": "Kids Fried Chicken ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Kids Chicken Fried Rice",
+        "type": "Chicken"
+    }
+]

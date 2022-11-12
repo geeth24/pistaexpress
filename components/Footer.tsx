@@ -58,11 +58,7 @@ function Footer({ links }: FooterCenteredProps) {
                         marginTop: 20,
                     }}
                 >
-                    <Image
-                        src="/Pista Express text.png"
-                        width={200}
-                        height={50}
-                    />
+                    <Image src="/PistaExpress250.png" width={150} height={75} />
                 </Group>
 
                 <Group className={classes.links}>{items}</Group>

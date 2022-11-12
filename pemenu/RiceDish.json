@@ -1,0 +1,70 @@
+[
+    {
+        "title": "Panner Biryani",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Hyderabadi Veg Dum Biryani ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Gutti Vankaya Biryani ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Veg Fried Rice ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Paneer Fried Rice ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Chicken Dum Biryani ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Vijayawada Chicken Biryani ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Bonless Biryani ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Chicken Fried Rice ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Goat Fry Biryani ",
+        "type": "GoatLamb"
+    },
+    {
+        "title": "Lamb Biryani",
+        "type": "GoatLamb"
+    },
+    {
+        "title": "Goat Kheema Biryani ",
+        "type": "GoatLamb"
+    },
+    {
+        "title": "Fish Biryani ",
+        "type": "SeaFood"
+    },
+    {
+        "title": "Shrimp Biryani ",
+        "type": "SeaFood"
+    },
+    {
+        "title": "Shrimp Fried Rice ",
+        "type": "SeaFood"
+    },
+    {
+        "title": "Egg Biryani ",
+        "type": "Eggtarian"
+    },
+    {
+        "title": "Egg Fried Rice ",
+        "type": "Eggtarian"
+    }
+]

@@ -10,7 +10,7 @@ export default class _Document extends Document {
         return (
             <Html>
                 <Head>
-                    <link rel="icon" href="/PistaExpress.png" />
+                    <link rel="icon" href="/PistaExpress3000.jpg" />
                     <link
                         rel="preconnect"
                         href="https://fonts.googleapis.com"

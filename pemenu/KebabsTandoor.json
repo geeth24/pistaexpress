@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Paneer Tikka Kebab ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Tandoor Chicken ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Chicken Tikka Kebab ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Chicken Hariyali Kebab ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Chicken Malai Kebab ",
+        "type": "Vegetarian"
+    },
+    {
+        "title": "Chicken Fried Kebab ",
+        "type": "Chicken"
+    },
+    {
+        "title": "Lamb Chops ",
+        "type": "GoatLamb"
+    }
+]

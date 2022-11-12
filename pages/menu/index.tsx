@@ -3,7 +3,6 @@ import {
     Container,
     Title,
     Text,
-    Button,
     Group,
     Card,
     Badge,
@@ -13,10 +12,24 @@ import {
     ActionIcon,
     Select,
 } from "@mantine/core"
-import { IconFilter } from "@tabler/icons"
+import { IconAdjustments, IconListSearch } from "@tabler/icons"
 import { useState } from "react"
 
 import AppetizersSides from "../../pemenu/AppetizersSides.json"
+import Entrees from "../../pemenu/Entrees.json"
+import RiceDish from "../../pemenu/RiceDish.json"
+import Noodles from "../../pemenu/Noodles.json"
+import Breads from "../../pemenu/Breads.json"
+import Kids from "../../pemenu/Kids.json"
+import Breakfast from "../../pemenu/Breakfast.json"
+import KebabsTandoor from "../../pemenu/KebabsTandoor.json"
+import Desserts from "../../pemenu/Desserts.json"
+import Drinks from "../../pemenu/Drinks.json"
+import { Link } from "react-scroll"
+
+const LINK_HEIGHT = 38
+const INDICATOR_SIZE = 10
+const INDICATOR_OFFSET = (LINK_HEIGHT - INDICATOR_SIZE) / 2
 
 const useStyles = createStyles((theme) => ({
     root: {
@@ -26,11 +39,13 @@ const useStyles = createStyles((theme) => ({
 
     inner: {},
 
-    content: {},
+    content: {
+        padding: 10,
+    },
 
     title: {
         fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-        textAlign: "center",
+        textAlign: "left",
         fontWeight: 900,
         fontSize: 38,
         marginBottom: theme.spacing.xl * 1.5,
@@ -44,21 +59,74 @@ const useStyles = createStyles((theme) => ({
         // textAlign: "left",
         // position: "left",
         fontSize: 25,
+        marginTop: theme.spacing.xl * 1.5,
         marginBottom: theme.spacing.xl * 1.5,
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: "left",
 
         [theme.fn.smallerThan("md")]: {
             fontSize: 20,
-            textAlign: "center",
-            justifyContent: "center",
-            // position: "center",
+            textAlign: "left",
+            justifyContent: "left",
+            // position: "left",
         },
     },
 
     button: {
         marginTop: theme.spacing.xl * 1.5,
+    },
+    link: {
+        ...theme.fn.focusStyles(),
+        display: "block",
+        textDecoration: "none",
+        color:
+            theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
+        lineHeight: `${LINK_HEIGHT}px`,
+        fontSize: theme.fontSizes.sm,
+        height: LINK_HEIGHT,
+        borderTopRightRadius: theme.radius.sm,
+        borderBottomRightRadius: theme.radius.sm,
+        borderLeft: `2px solid ${
+            theme.colorScheme === "dark"
+                ? theme.colors.dark[4]
+                : theme.colors.gray[2]
+        }`,
+
+        paddingLeft: theme.spacing.lg,
+        "&:hover": {
+            backgroundColor:
+                theme.colorScheme === "dark"
+                    ? theme.colors.dark[6]
+                    : theme.colors.gray[0],
+        },
+    },
+
+    linkActive: {
+        fontWeight: 500,
+        color: theme.colors[theme.primaryColor][
+            theme.colorScheme === "dark" ? 3 : 7
+        ],
+    },
+
+    links: {
+        position: "relative",
+    },
+
+    indicator: {
+        transition: "transform 150ms ease",
+        border: `2px solid ${
+            theme.colors[theme.primaryColor][
+                theme.colorScheme === "dark" ? 3 : 7
+            ]
+        }`,
+        backgroundColor:
+            theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+        height: INDICATOR_SIZE,
+        width: INDICATOR_SIZE,
+        borderRadius: INDICATOR_SIZE,
+        position: "absolute",
+        left: -INDICATOR_SIZE / 2 + 1,
     },
 }))
 
@@ -67,10 +135,28 @@ function Menu() {
     const theme = useMantineTheme()
     const [opened, setOpened] = useState(false)
     const [type, setType] = useState<string | null>(null)
+    const [active, setActive] = useState(0)
 
     return (
         <>
             <Container className={classes.root}>
+                <ActionIcon
+                    size="lg"
+                    color="lime"
+                    variant="filled"
+                    radius="xl"
+                    onClick={() => setOpened(true)}
+                    sx={{
+                        position: "fixed",
+                        // top: 20,
+                        right: 40,
+                        bottom: 40,
+
+                        zIndex: 100,
+                    }}
+                >
+                    <IconAdjustments />
+                </ActionIcon>
                 <div className={classes.inner}>
                     <div className={classes.content}>
                         <Drawer
@@ -85,13 +171,72 @@ function Menu() {
                             onClose={() => setOpened(false)}
                         >
                             <div style={{ padding: 20 }}>
-                                <Title order={3}>Filter</Title>
-                                <Text size="sm" style={{ marginTop: 10 }}>
-                                    Filter by type
-                                </Text>
+                                <Title order={3}>Menu Options</Title>
+                                <Table
+                                    links={[
+                                        {
+                                            label: "Appetizers & Sides",
+                                            link: "AppetizersSides",
+                                            order: 1,
+                                        },
+                                        {
+                                            label: "Entrees",
+                                            link: "Entrees",
+                                            order: 1,
+                                        },
+                                        {
+                                            label: "Rice Dishes",
+                                            link: "RiceDish",
+                                            order: 1,
+                                        },
+                                        {
+                                            label: "Noodles",
+                                            link: "Noodles",
+                                            order: 1,
+                                        },
+                                        {
+                                            label: "Breads",
+                                            link: "Breads",
+                                            order: 1,
+                                        },
+                                        {
+                                            label: "Kids",
+                                            link: "Kids",
+                                            order: 1,
+                                        },
+                                        {
+                                            label: "Breakfast",
+                                            link: "Breakfast",
+                                            order: 1,
+                                        },
+                                        {
+                                            label: "Kebabs & Tandoor",
+                                            link: "KebabsTandoor",
+                                            order: 1,
+                                        },
+                                        {
+                                            label: "Desserts",
+                                            link: "Desserts",
+                                            order: 1,
+                                        },
+                                        {
+                                            label: "Drinks",
+                                            link: "Drinks",
+                                            order: 1,
+                                        },
+                                    ]}
+                                    open={opened}
+                                    setOpen={setOpened}
+                                    active={active}
+                                    setActive={setActive}
+                                />
+                                {/* <Title order={4} mt={20}>
+                                    Filters
+                                </Title>
+
                                 <Select
-                                    label="Category"
-                                    placeholder="Select category"
+                                    label="Filter by type"
+                                    placeholder="Select type"
                                     clearable
                                     data={[
                                         {
@@ -117,63 +262,639 @@ function Menu() {
                                     ]}
                                     value={type}
                                     onChange={(value) => setType(value)}
-                                />
+                                /> */}
                             </div>
                         </Drawer>
                         <Title className={classes.title}>Menu</Title>
-                        <Group className={classes.subtitle}>
-                            <Text color="teal">Appetizers & Sides</Text>
-                            <ActionIcon
-                                size="lg"
-                                color="teal"
-                                onClick={() => setOpened(true)}
-                            >
-                                <IconFilter />
-                            </ActionIcon>
-                        </Group>
+                        <div id="AppetizersSides">
+                            <Group className={classes.subtitle}>
+                                <Text color="lime">Appetizers & Sides</Text>
+                            </Group>
 
-                        <Group position="center">
-                            <SimpleGrid
-                                cols={4}
-                                spacing="xl"
-                                breakpoints={[
-                                    { maxWidth: 980, cols: 3, spacing: "md" },
-                                    { maxWidth: 755, cols: 2, spacing: "sm" },
-                                    // { maxWidth: 600, cols: 1, spacing: "sm" },
-                                ]}
+                            <Group
+                                position="left"
+                                //@ts-ignore
                             >
-                                {AppetizersSides.filter(
-                                    (item) => item.type === type || !type
-                                ).map((item) => (
-                                    <Card
-                                        shadow="sm"
-                                        p="lg"
-                                        radius="md"
-                                        withBorder
-                                        key={item.title}
-                                    >
-                                        <Group position="apart" mt="md" mb="xs">
-                                            <Badge
-                                                color="teal"
-                                                variant="light"
-                                                size="xs"
-                                            >
-                                                {item.type}
-                                            </Badge>
-                                        </Group>
-                                        <Text
-                                            size="md"
-                                            color="teal"
-                                            sx={{
-                                                fontWeight: "bold",
-                                            }}
+                                <SimpleGrid
+                                    cols={4}
+                                    spacing="xl"
+                                    breakpoints={[
+                                        {
+                                            maxWidth: 980,
+                                            cols: 3,
+                                            spacing: "md",
+                                        },
+                                        {
+                                            maxWidth: 755,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                        {
+                                            maxWidth: 600,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                    ]}
+                                >
+                                    {AppetizersSides.filter(
+                                        (item) => item.type === type || !type
+                                    ).map((item) => (
+                                        <Card
+                                            shadow="sm"
+                                            p="lg"
+                                            radius="md"
+                                            withBorder
+                                            key={item.title}
                                         >
-                                            {item.title}
-                                        </Text>
-                                    </Card>
-                                ))}
-                            </SimpleGrid>
-                        </Group>
+                                            <Group
+                                                position="apart"
+                                                mt="md"
+                                                mb="xs"
+                                            >
+                                                <Badge
+                                                    color="lime"
+                                                    variant="light"
+                                                    size="xs"
+                                                >
+                                                    {item.type}
+                                                </Badge>
+                                            </Group>
+                                            <Text
+                                                size="md"
+                                                color="lime"
+                                                sx={{
+                                                    fontWeight: "bold",
+                                                }}
+                                            >
+                                                {item.title}
+                                            </Text>
+                                        </Card>
+                                    ))}
+                                </SimpleGrid>
+                            </Group>
+                        </div>
+                        <div id="Entrees">
+                            <Group className={classes.subtitle}>
+                                <Text color="lime">Entrees</Text>
+                            </Group>
+
+                            <Group position="left">
+                                <SimpleGrid
+                                    cols={4}
+                                    spacing="xl"
+                                    breakpoints={[
+                                        {
+                                            maxWidth: 980,
+                                            cols: 3,
+                                            spacing: "md",
+                                        },
+                                        {
+                                            maxWidth: 755,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                        {
+                                            maxWidth: 600,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                    ]}
+                                >
+                                    {
+                                        Entrees.filter(
+                                            (item) =>
+                                                item.type === type || !type
+                                        ).map((item) => (
+                                            <Card
+                                                shadow="sm"
+                                                p="lg"
+                                                radius="md"
+                                                withBorder
+                                                key={item.title}
+                                            >
+                                                <Group
+                                                    position="apart"
+                                                    mt="md"
+                                                    mb="xs"
+                                                >
+                                                    <Badge
+                                                        color="lime"
+                                                        variant="light"
+                                                        size="xs"
+                                                    >
+                                                        {item.type}
+                                                    </Badge>
+                                                </Group>
+                                                <Text
+                                                    size="md"
+                                                    color="lime"
+                                                    sx={{
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </Card>
+                                        )) //else if no items are found
+                                    }
+                                </SimpleGrid>
+                            </Group>
+                        </div>
+                        <div id="RiceDish">
+                            <Group className={classes.subtitle}>
+                                <Text color="lime">Rice Dishes</Text>
+                            </Group>
+
+                            <Group position="left">
+                                <SimpleGrid
+                                    cols={4}
+                                    spacing="xl"
+                                    breakpoints={[
+                                        {
+                                            maxWidth: 980,
+                                            cols: 3,
+                                            spacing: "md",
+                                        },
+                                        {
+                                            maxWidth: 755,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                        {
+                                            maxWidth: 600,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                    ]}
+                                >
+                                    {
+                                        RiceDish.filter(
+                                            (item) =>
+                                                item.type === type || !type
+                                        ).map((item) => (
+                                            <Card
+                                                shadow="sm"
+                                                p="lg"
+                                                radius="md"
+                                                withBorder
+                                                key={item.title}
+                                            >
+                                                <Group
+                                                    position="apart"
+                                                    mt="md"
+                                                    mb="xs"
+                                                >
+                                                    <Badge
+                                                        color="lime"
+                                                        variant="light"
+                                                        size="xs"
+                                                    >
+                                                        {item.type}
+                                                    </Badge>
+                                                </Group>
+                                                <Text
+                                                    size="md"
+                                                    color="lime"
+                                                    sx={{
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </Card>
+                                        )) //else if no items are found
+                                    }
+                                </SimpleGrid>
+                            </Group>
+                        </div>
+                        <div id="Noodles">
+                            <Group className={classes.subtitle}>
+                                <Text color="lime">Noodles</Text>
+                            </Group>
+
+                            <Group position="left">
+                                <SimpleGrid
+                                    cols={4}
+                                    spacing="xl"
+                                    breakpoints={[
+                                        {
+                                            maxWidth: 980,
+                                            cols: 3,
+                                            spacing: "md",
+                                        },
+                                        // { maxWidth: 755, cols: 2, spacing: "sm" },
+                                        // { maxWidth: 600, cols: 2, spacing: "sm" },
+                                    ]}
+                                >
+                                    {
+                                        Noodles.filter(
+                                            (item) =>
+                                                item.type === type || !type
+                                        ).map((item) => (
+                                            <Card
+                                                shadow="sm"
+                                                p="lg"
+                                                radius="md"
+                                                withBorder
+                                                key={item.title}
+                                            >
+                                                <Group
+                                                    position="apart"
+                                                    mt="md"
+                                                    mb="xs"
+                                                >
+                                                    <Badge
+                                                        color="lime"
+                                                        variant="light"
+                                                        size="xs"
+                                                    >
+                                                        {item.type}
+                                                    </Badge>
+                                                </Group>
+                                                <Text
+                                                    size="md"
+                                                    color="lime"
+                                                    sx={{
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </Card>
+                                        )) //else if no items are found
+                                    }
+                                </SimpleGrid>
+                            </Group>
+                        </div>
+                        <div id="Breads">
+                            <Group className={classes.subtitle}>
+                                <Text color="lime">Breads</Text>
+                            </Group>
+
+                            <Group position="left">
+                                <SimpleGrid
+                                    cols={4}
+                                    spacing="xl"
+                                    breakpoints={[
+                                        {
+                                            maxWidth: 980,
+                                            cols: 3,
+                                            spacing: "md",
+                                        },
+                                        // { maxWidth: 755, cols: 2, spacing: "sm" },
+                                        // { maxWidth: 600, cols: 2, spacing: "sm" },
+                                    ]}
+                                >
+                                    {
+                                        Breads.map((item) => (
+                                            <Card
+                                                shadow="sm"
+                                                p="lg"
+                                                radius="md"
+                                                withBorder
+                                                key={item.title}
+                                            >
+                                                <Group
+                                                    position="apart"
+                                                    mt="md"
+                                                    mb="xs"
+                                                >
+                                                    <Badge
+                                                        color="lime"
+                                                        variant="light"
+                                                        size="xs"
+                                                    >
+                                                        Bread
+                                                    </Badge>
+                                                </Group>
+                                                <Text
+                                                    size="md"
+                                                    color="lime"
+                                                    sx={{
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </Card>
+                                        )) //else if no items are found
+                                    }
+                                </SimpleGrid>
+                            </Group>
+                        </div>
+                        <div id="Kids">
+                            <Group className={classes.subtitle}>
+                                <Text color="lime">Kids</Text>
+                            </Group>
+
+                            <Group position="center">
+                                <SimpleGrid
+                                    cols={4}
+                                    spacing="xl"
+                                    breakpoints={[
+                                        {
+                                            maxWidth: 980,
+                                            cols: 3,
+                                            spacing: "md",
+                                        },
+                                        {
+                                            maxWidth: 755,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                        {
+                                            maxWidth: 600,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                    ]}
+                                >
+                                    {
+                                        Kids.filter(
+                                            (item) =>
+                                                item.type === type || !type
+                                        ).map((item) => (
+                                            <Card
+                                                shadow="sm"
+                                                p="lg"
+                                                radius="md"
+                                                withBorder
+                                                key={item.title}
+                                            >
+                                                <Group
+                                                    position="apart"
+                                                    mt="md"
+                                                    mb="xs"
+                                                >
+                                                    <Badge
+                                                        color="lime"
+                                                        variant="light"
+                                                        size="xs"
+                                                    >
+                                                        {item.type}
+                                                    </Badge>
+                                                </Group>
+                                                <Text
+                                                    size="md"
+                                                    color="lime"
+                                                    sx={{
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </Card>
+                                        )) //else if no items are found
+                                    }
+                                </SimpleGrid>
+                            </Group>
+                        </div>
+                        <div id="Breakfast">
+                            <Group className={classes.subtitle}>
+                                <Text color="lime">Breakfast</Text>
+                            </Group>
+
+                            <Group position="center">
+                                <SimpleGrid
+                                    cols={4}
+                                    spacing="xl"
+                                    breakpoints={[
+                                        {
+                                            maxWidth: 980,
+                                            cols: 3,
+                                            spacing: "md",
+                                        },
+                                        {
+                                            maxWidth: 755,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                        {
+                                            maxWidth: 600,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                    ]}
+                                >
+                                    {
+                                        Breakfast.filter(
+                                            (item) =>
+                                                item.type === type || !type
+                                        ).map((item) => (
+                                            <Card
+                                                shadow="sm"
+                                                p="lg"
+                                                radius="md"
+                                                withBorder
+                                                key={item.title}
+                                            >
+                                                <Group
+                                                    position="apart"
+                                                    mt="md"
+                                                    mb="xs"
+                                                >
+                                                    <Badge
+                                                        color="lime"
+                                                        variant="light"
+                                                        size="xs"
+                                                    >
+                                                        {item.type}
+                                                    </Badge>
+                                                </Group>
+                                                <Text
+                                                    size="md"
+                                                    color="lime"
+                                                    sx={{
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </Card>
+                                        )) //else if no items are found
+                                    }
+                                </SimpleGrid>
+                            </Group>
+                        </div>
+                        <div id="KebabsTandoor">
+                            <Group className={classes.subtitle}>
+                                <Text color="lime">Kebabs &amp; Tandoor</Text>
+                            </Group>
+
+                            <Group position="center">
+                                <SimpleGrid
+                                    cols={4}
+                                    spacing="xl"
+                                    breakpoints={[
+                                        {
+                                            maxWidth: 980,
+                                            cols: 3,
+                                            spacing: "md",
+                                        },
+                                        {
+                                            maxWidth: 755,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                        {
+                                            maxWidth: 600,
+                                            cols: 2,
+                                            spacing: "sm",
+                                        },
+                                    ]}
+                                >
+                                    {
+                                        KebabsTandoor.filter(
+                                            (item) =>
+                                                item.type === type || !type
+                                        ).map((item) => (
+                                            <Card
+                                                shadow="sm"
+                                                p="lg"
+                                                radius="md"
+                                                withBorder
+                                                key={item.title}
+                                            >
+                                                <Group
+                                                    position="apart"
+                                                    mt="md"
+                                                    mb="xs"
+                                                >
+                                                    <Badge
+                                                        color="lime"
+                                                        variant="light"
+                                                        size="xs"
+                                                    >
+                                                        {item.type}
+                                                    </Badge>
+                                                </Group>
+                                                <Text
+                                                    size="md"
+                                                    color="lime"
+                                                    sx={{
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </Card>
+                                        )) //else if no items are found
+                                    }
+                                </SimpleGrid>
+                            </Group>
+                        </div>
+                        <div id="Desserts">
+                            <Group className={classes.subtitle}>
+                                <Text color="lime">Desserts</Text>
+                            </Group>
+
+                            <Group position="left">
+                                <SimpleGrid
+                                    cols={4}
+                                    spacing="xl"
+                                    breakpoints={[
+                                        {
+                                            maxWidth: 980,
+                                            cols: 3,
+                                            spacing: "md",
+                                        },
+                                        // { maxWidth: 755, cols: 2, spacing: "sm" },
+                                        // { maxWidth: 600, cols: 2, spacing: "sm" },
+                                    ]}
+                                >
+                                    {
+                                        Desserts.map((item) => (
+                                            <Card
+                                                shadow="sm"
+                                                p="lg"
+                                                radius="md"
+                                                withBorder
+                                                key={item.title}
+                                            >
+                                                <Group
+                                                    position="apart"
+                                                    mt="md"
+                                                    mb="xs"
+                                                >
+                                                    <Badge
+                                                        color="lime"
+                                                        variant="light"
+                                                        size="xs"
+                                                    >
+                                                        Sweets
+                                                    </Badge>
+                                                </Group>
+                                                <Text
+                                                    size="md"
+                                                    color="lime"
+                                                    sx={{
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </Card>
+                                        )) //else if no items are found
+                                    }
+                                </SimpleGrid>
+                            </Group>
+                        </div>
+                        <div id="Drinks">
+                            <Group className={classes.subtitle}>
+                                <Text color="lime">Drinks</Text>
+                            </Group>
+
+                            <Group position="left">
+                                <SimpleGrid
+                                    cols={4}
+                                    spacing="xl"
+                                    breakpoints={[
+                                        {
+                                            maxWidth: 980,
+                                            cols: 3,
+                                            spacing: "md",
+                                        },
+                                        // { maxWidth: 755, cols: 2, spacing: "sm" },
+                                        // { maxWidth: 600, cols: 2, spacing: "sm" },
+                                    ]}
+                                >
+                                    {
+                                        Drinks.map((item) => (
+                                            <Card
+                                                shadow="sm"
+                                                p="lg"
+                                                radius="md"
+                                                withBorder
+                                                key={item.title}
+                                            >
+                                                <Group
+                                                    position="apart"
+                                                    mt="md"
+                                                    mb="xs"
+                                                >
+                                                    <Badge
+                                                        color="lime"
+                                                        variant="light"
+                                                        size="xs"
+                                                    >
+                                                        Beverages
+                                                    </Badge>
+                                                </Group>
+                                                <Text
+                                                    size="md"
+                                                    color="lime"
+                                                    sx={{
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </Card>
+                                        )) //else if no items are found
+                                    }
+                                </SimpleGrid>
+                            </Group>
+                        </div>
                     </div>
                 </div>
             </Container>
@@ -182,3 +903,51 @@ function Menu() {
 }
 
 export default Menu
+
+interface TableOfContentsFloatingProps {
+    links: { label: string; link: string; order: number }[]
+    open: boolean
+    setOpen: (open: boolean) => void
+    active: number
+    setActive: (active: number) => void
+}
+
+function Table({
+    links,
+    setOpen,
+    active,
+    setActive,
+}: TableOfContentsFloatingProps) {
+    const { classes, cx } = useStyles()
+
+    const items = links.map((item, index) => (
+        <Link
+            to={item.link}
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-100}
+            key={item.link}
+            style={{
+                cursor: "pointer",
+            }}
+            className={cx(classes.link)}
+            onClick={() => {
+                setActive(index)
+                setOpen(false)
+            }}
+        >
+            {item.label}
+        </Link>
+    ))
+
+    return (
+        <div>
+            <Group mb="md">
+                <IconListSearch size={18} stroke={1.5} />
+                <Text>Scroll Through Menu</Text>
+            </Group>
+            <div className={classes.links}>{items}</div>
+        </div>
+    )
+}

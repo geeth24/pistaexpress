@@ -88,8 +88,8 @@ function Hero() {
                                 inherit
                                 variant="gradient"
                                 gradient={{
-                                    from: "teal.2",
-                                    to: "teal.4",
+                                    from: "lime.2",
+                                    to: "lime.4",
                                 }}
                             >
                                 Fast & <br /> Authentic Food
@@ -108,7 +108,7 @@ function Hero() {
                         <Link href="/menu">
                             <Button
                                 variant="gradient"
-                                gradient={{ from: "teal", to: "teal" }}
+                                gradient={{ from: "lime", to: "lime" }}
                                 size="md"
                                 className={classes.control}
                                 mt={40}

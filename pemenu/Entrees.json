@@ -1,0 +1,126 @@
+[
+        {
+            "title": "Dal Tadka (Tomato/ Mango/Spinach) ",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Chana Masala",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Kadai Panner",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Aloo Gobi ",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Malai Kofta ",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Panner Butter Masala",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Kadai Panner ",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Palak Panner ",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Mutter Panner ",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Phool Makhani ",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Panner Chettinadu ",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Aloo Fry ",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Panner Tikka Masala ",
+            "type": "Vegetarian"
+        },
+        {
+            "title": "Chicken Tikka Masala",
+            "type": "Chicken"
+        },
+        {
+            "title": "Butter Chicken",
+            "type": "Chicken"
+        },
+        {
+            "title": "Mango Chicken",
+            "type": "Chicken"
+        },
+        {
+            "title": "Chicken Chettinadu",
+            "type": "Chicken"
+        },
+        {
+            "title": "Andhra Chicken Curry (Bone In) ",
+            "type": "Chicken"
+        },
+        {
+            "title": "Chicken Vindaloo ",
+            "type": "Chicken"
+        },
+        {
+            "title": "Gongura Chicken Curry ",
+            "type": "Chicken"
+        },
+        {
+            "title": "Chicken Kurma",
+            "type": "Chicken"
+        },
+        {
+            "title": "Methi Chicken ",
+            "type": "Chicken"
+        },
+        {
+            "title": "Chef Special Goat Curry ",
+            "type": "GoatLamb"
+        },
+        {
+            "title": "Goat Chettinadu ",
+            "type": "GoatLamb"
+        },
+        {
+            "title": "Gongura Goat Curry ",
+            "type": "GoatLamb"
+        },
+        {
+            "title": "Goat Vindaloo ",
+            "type": "GoatLamb"
+        },
+        {
+            "title": "Goat Kurma ",
+            "type": "GoatLamb"
+        },
+        {
+            "title": "Lamb Vindaloo ",
+            "type": "GoatLamb"
+        },
+        {
+            "title": "Lamb Tikka Masla ",
+            "type": "GoatLamb"
+        },
+        {
+            "title": "Lamb Rogan Gosh ",
+            "type": "GoatLamb"
+        },
+        {
+            "title": "Mango Lamb ",
+            "type": "GoatLamb"
+        }
+    ]
