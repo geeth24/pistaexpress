@@ -20,6 +20,7 @@
     "@mantine/next": "^5.6.4",
     "@mantine/notifications": "^5.6.4",
     "@mantine/prism": "^5.6.4",
+    "@react-google-maps/api": "^2.17.0",
     "@tabler/icons": "^1.109.0",
     "@types/react-scroll": "^1.8.4",
     "cookies-next": "^2.1.1",
