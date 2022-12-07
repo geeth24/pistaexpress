@@ -158,7 +158,12 @@ function Navbar({ links }: NavbarProps) {
                         className={classes.burger}
                         size="sm"
                     />
-                    <Image src="/PistaExpress250.png" width={150} height={75} />
+                    <Image
+                        src="/PistaExpress250.png"
+                        width={150}
+                        height={75}
+                        alt="image of pista express logo"
+                    />
                 </Group>
                 <Group className={classes.links} spacing={5}>
                     {items}

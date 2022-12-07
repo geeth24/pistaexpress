@@ -52,7 +52,12 @@ function Footer() {
         <div className={classes.footer}>
             <Container className={classes.inner}>
                 <Group spacing={5} position="center">
-                    <Image src="/PistaExpress250.png" width={150} height={75} />
+                    <Image
+                        src="/PistaExpress250.png"
+                        width={150}
+                        height={75}
+                        alt="image of pista express logo"
+                    />
                 </Group>
 
                 <Group spacing={5} position="center">
