@@ -62,6 +62,15 @@ function Footer() {
 
                 <Group spacing={5} position="center">
                     <Stack spacing="xs" align="center">
+                        <a
+                            href="tel:+1 (432) 897-4533"
+                            style={{ textDecoration: "none" }}
+                        >
+                            {" "}
+                            <Text size="sm" weight={500} color="lime">
+                                +1 (432) 897-4533
+                            </Text>
+                        </a>
                         <Text
                             size="sm"
                             weight={500}
@@ -72,6 +81,7 @@ function Footer() {
                         >
                             © {new Date().getFullYear()} Pista Express
                         </Text>
+
                         <Group spacing="xs">
                             <Text size="sm" weight={500} color="lime">
                                 Built with {` `}
