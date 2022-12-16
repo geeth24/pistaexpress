@@ -67,47 +67,48 @@ function ContactIcon({
 }: ContactIconProps) {
     const { classes, cx } = useStyles({ variant })
     return (
-        <div
-            className={cx(classes.wrapper, className)}
-            {...others}
-            onClick={() => window.open(hrefPrefix + description)}
+        <a
+            href={`${hrefPrefix}${description}`}
+            style={{ textDecoration: "none" }}
         >
-            {variant === "gradient" ? (
-                <ThemeIcon size={40} radius="md" className={classes.icon}>
-                    <Icon size={24} />
-                </ThemeIcon>
-            ) : (
-                <Box mr="md">
-                    <Icon size={24} />
-                </Box>
-            )}
+            <div className={cx(classes.wrapper, className)} {...others}>
+                {variant === "gradient" ? (
+                    <ThemeIcon size={40} radius="md" className={classes.icon}>
+                        <Icon size={24} />
+                    </ThemeIcon>
+                ) : (
+                    <Box mr="md">
+                        <Icon size={24} />
+                    </Box>
+                )}
 
-            <div>
-                <Text
-                    size="xs"
-                    className={classes.title}
-                    sx={(theme) => ({
-                        color:
-                            theme.colorScheme === "dark"
-                                ? theme.colors.lime[1]
-                                : theme.colors.lime[9],
-                    })}
-                >
-                    {title}
-                </Text>
-                <Text
-                    className={classes.description}
-                    sx={(theme) => ({
-                        color:
-                            theme.colorScheme === "dark"
-                                ? theme.white
-                                : theme.colors.lime[9],
-                    })}
-                >
-                    {description}
-                </Text>
+                <div>
+                    <Text
+                        size="xs"
+                        className={classes.title}
+                        sx={(theme) => ({
+                            color:
+                                theme.colorScheme === "dark"
+                                    ? theme.colors.lime[1]
+                                    : theme.colors.lime[9],
+                        })}
+                    >
+                        {title}
+                    </Text>
+                    <Text
+                        className={classes.description}
+                        sx={(theme) => ({
+                            color:
+                                theme.colorScheme === "dark"
+                                    ? theme.white
+                                    : theme.colors.lime[9],
+                        })}
+                    >
+                        {description}
+                    </Text>
+                </div>
             </div>
-        </div>
+        </a>
     )
 }
 
