@@ -27,6 +27,9 @@ import Desserts from "../../pemenu/Desserts.json"
 import Drinks from "../../pemenu/Drinks.json"
 import { Link } from "react-scroll"
 import Head from "next/head"
+import { GetServerSideProps } from "next"
+import { sanityClient } from "../../sanity"
+import { MenuCollection } from "../../typings"
 
 const LINK_HEIGHT = 38
 const INDICATOR_SIZE = 10
@@ -131,7 +134,11 @@ const useStyles = createStyles((theme) => ({
     },
 }))
 
-function Menu() {
+interface MenuProps {
+    collections: MenuCollection
+}
+
+function Menu({ collections }: MenuProps) {
     const { classes } = useStyles()
     const theme = useMantineTheme()
     const [opened, setOpened] = useState(false)
@@ -300,40 +307,43 @@ function Menu() {
                                         },
                                     ]}
                                 >
-                                    {AppetizersSides.filter(
-                                        (item) => item.type === type || !type
-                                    ).map((item) => (
-                                        <Card
-                                            shadow="sm"
-                                            p="lg"
-                                            radius="md"
-                                            withBorder
-                                            key={item.title}
-                                        >
-                                            <Group
-                                                position="apart"
-                                                mt="md"
-                                                mb="xs"
+                                    {collections.appetizerssides
+                                        .filter(
+                                            (item) =>
+                                                item.type === type || !type
+                                        )
+                                        .map((item) => (
+                                            <Card
+                                                shadow="sm"
+                                                p="lg"
+                                                radius="md"
+                                                withBorder
+                                                key={item.title}
                                             >
-                                                <Badge
-                                                    color="lime"
-                                                    variant="light"
-                                                    size="xs"
+                                                <Group
+                                                    position="apart"
+                                                    mt="md"
+                                                    mb="xs"
                                                 >
-                                                    {item.type}
-                                                </Badge>
-                                            </Group>
-                                            <Text
-                                                size="md"
-                                                color="lime"
-                                                sx={{
-                                                    fontWeight: "bold",
-                                                }}
-                                            >
-                                                {item.title}
-                                            </Text>
-                                        </Card>
-                                    ))}
+                                                    <Badge
+                                                        color="lime"
+                                                        variant="light"
+                                                        size="xs"
+                                                    >
+                                                        {item.type}
+                                                    </Badge>
+                                                </Group>
+                                                <Text
+                                                    size="md"
+                                                    color="lime"
+                                                    sx={{
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </Card>
+                                        ))}
                                 </SimpleGrid>
                             </Group>
                         </div>
@@ -365,41 +375,43 @@ function Menu() {
                                     ]}
                                 >
                                     {
-                                        Entrees.filter(
-                                            (item) =>
-                                                item.type === type || !type
-                                        ).map((item) => (
-                                            <Card
-                                                shadow="sm"
-                                                p="lg"
-                                                radius="md"
-                                                withBorder
-                                                key={item.title}
-                                            >
-                                                <Group
-                                                    position="apart"
-                                                    mt="md"
-                                                    mb="xs"
+                                        collections.entrees
+                                            .filter(
+                                                (item) =>
+                                                    item.type === type || !type
+                                            )
+                                            .map((item) => (
+                                                <Card
+                                                    shadow="sm"
+                                                    p="lg"
+                                                    radius="md"
+                                                    withBorder
+                                                    key={item.title}
                                                 >
-                                                    <Badge
-                                                        color="lime"
-                                                        variant="light"
-                                                        size="xs"
+                                                    <Group
+                                                        position="apart"
+                                                        mt="md"
+                                                        mb="xs"
                                                     >
-                                                        {item.type}
-                                                    </Badge>
-                                                </Group>
-                                                <Text
-                                                    size="md"
-                                                    color="lime"
-                                                    sx={{
-                                                        fontWeight: "bold",
-                                                    }}
-                                                >
-                                                    {item.title}
-                                                </Text>
-                                            </Card>
-                                        )) //else if no items are found
+                                                        <Badge
+                                                            color="lime"
+                                                            variant="light"
+                                                            size="xs"
+                                                        >
+                                                            {item.type}
+                                                        </Badge>
+                                                    </Group>
+                                                    <Text
+                                                        size="md"
+                                                        color="lime"
+                                                        sx={{
+                                                            fontWeight: "bold",
+                                                        }}
+                                                    >
+                                                        {item.title}
+                                                    </Text>
+                                                </Card>
+                                            )) //else if no items are found
                                     }
                                 </SimpleGrid>
                             </Group>
@@ -432,41 +444,43 @@ function Menu() {
                                     ]}
                                 >
                                     {
-                                        RiceDish.filter(
-                                            (item) =>
-                                                item.type === type || !type
-                                        ).map((item) => (
-                                            <Card
-                                                shadow="sm"
-                                                p="lg"
-                                                radius="md"
-                                                withBorder
-                                                key={item.title}
-                                            >
-                                                <Group
-                                                    position="apart"
-                                                    mt="md"
-                                                    mb="xs"
+                                        collections.ricedish
+                                            .filter(
+                                                (item) =>
+                                                    item.type === type || !type
+                                            )
+                                            .map((item) => (
+                                                <Card
+                                                    shadow="sm"
+                                                    p="lg"
+                                                    radius="md"
+                                                    withBorder
+                                                    key={item.title}
                                                 >
-                                                    <Badge
-                                                        color="lime"
-                                                        variant="light"
-                                                        size="xs"
+                                                    <Group
+                                                        position="apart"
+                                                        mt="md"
+                                                        mb="xs"
                                                     >
-                                                        {item.type}
-                                                    </Badge>
-                                                </Group>
-                                                <Text
-                                                    size="md"
-                                                    color="lime"
-                                                    sx={{
-                                                        fontWeight: "bold",
-                                                    }}
-                                                >
-                                                    {item.title}
-                                                </Text>
-                                            </Card>
-                                        )) //else if no items are found
+                                                        <Badge
+                                                            color="lime"
+                                                            variant="light"
+                                                            size="xs"
+                                                        >
+                                                            {item.type}
+                                                        </Badge>
+                                                    </Group>
+                                                    <Text
+                                                        size="md"
+                                                        color="lime"
+                                                        sx={{
+                                                            fontWeight: "bold",
+                                                        }}
+                                                    >
+                                                        {item.title}
+                                                    </Text>
+                                                </Card>
+                                            )) //else if no items are found
                                     }
                                 </SimpleGrid>
                             </Group>
@@ -491,41 +505,43 @@ function Menu() {
                                     ]}
                                 >
                                     {
-                                        Noodles.filter(
-                                            (item) =>
-                                                item.type === type || !type
-                                        ).map((item) => (
-                                            <Card
-                                                shadow="sm"
-                                                p="lg"
-                                                radius="md"
-                                                withBorder
-                                                key={item.title}
-                                            >
-                                                <Group
-                                                    position="apart"
-                                                    mt="md"
-                                                    mb="xs"
+                                        collections.noodles
+                                            .filter(
+                                                (item) =>
+                                                    item.type === type || !type
+                                            )
+                                            .map((item) => (
+                                                <Card
+                                                    shadow="sm"
+                                                    p="lg"
+                                                    radius="md"
+                                                    withBorder
+                                                    key={item.title}
                                                 >
-                                                    <Badge
-                                                        color="lime"
-                                                        variant="light"
-                                                        size="xs"
+                                                    <Group
+                                                        position="apart"
+                                                        mt="md"
+                                                        mb="xs"
                                                     >
-                                                        {item.type}
-                                                    </Badge>
-                                                </Group>
-                                                <Text
-                                                    size="md"
-                                                    color="lime"
-                                                    sx={{
-                                                        fontWeight: "bold",
-                                                    }}
-                                                >
-                                                    {item.title}
-                                                </Text>
-                                            </Card>
-                                        )) //else if no items are found
+                                                        <Badge
+                                                            color="lime"
+                                                            variant="light"
+                                                            size="xs"
+                                                        >
+                                                            {item.type}
+                                                        </Badge>
+                                                    </Group>
+                                                    <Text
+                                                        size="md"
+                                                        color="lime"
+                                                        sx={{
+                                                            fontWeight: "bold",
+                                                        }}
+                                                    >
+                                                        {item.title}
+                                                    </Text>
+                                                </Card>
+                                            )) //else if no items are found
                                     }
                                 </SimpleGrid>
                             </Group>
@@ -550,7 +566,7 @@ function Menu() {
                                     ]}
                                 >
                                     {
-                                        Breads.map((item) => (
+                                        collections.bread.map((item) => (
                                             <Card
                                                 shadow="sm"
                                                 p="lg"
@@ -614,41 +630,43 @@ function Menu() {
                                     ]}
                                 >
                                     {
-                                        Kids.filter(
-                                            (item) =>
-                                                item.type === type || !type
-                                        ).map((item) => (
-                                            <Card
-                                                shadow="sm"
-                                                p="lg"
-                                                radius="md"
-                                                withBorder
-                                                key={item.title}
-                                            >
-                                                <Group
-                                                    position="apart"
-                                                    mt="md"
-                                                    mb="xs"
+                                        collections.kids
+                                            .filter(
+                                                (item) =>
+                                                    item.type === type || !type
+                                            )
+                                            .map((item) => (
+                                                <Card
+                                                    shadow="sm"
+                                                    p="lg"
+                                                    radius="md"
+                                                    withBorder
+                                                    key={item.title}
                                                 >
-                                                    <Badge
-                                                        color="lime"
-                                                        variant="light"
-                                                        size="xs"
+                                                    <Group
+                                                        position="apart"
+                                                        mt="md"
+                                                        mb="xs"
                                                     >
-                                                        {item.type}
-                                                    </Badge>
-                                                </Group>
-                                                <Text
-                                                    size="md"
-                                                    color="lime"
-                                                    sx={{
-                                                        fontWeight: "bold",
-                                                    }}
-                                                >
-                                                    {item.title}
-                                                </Text>
-                                            </Card>
-                                        )) //else if no items are found
+                                                        <Badge
+                                                            color="lime"
+                                                            variant="light"
+                                                            size="xs"
+                                                        >
+                                                            {item.type}
+                                                        </Badge>
+                                                    </Group>
+                                                    <Text
+                                                        size="md"
+                                                        color="lime"
+                                                        sx={{
+                                                            fontWeight: "bold",
+                                                        }}
+                                                    >
+                                                        {item.title}
+                                                    </Text>
+                                                </Card>
+                                            )) //else if no items are found
                                     }
                                 </SimpleGrid>
                             </Group>
@@ -681,41 +699,43 @@ function Menu() {
                                     ]}
                                 >
                                     {
-                                        Breakfast.filter(
-                                            (item) =>
-                                                item.type === type || !type
-                                        ).map((item) => (
-                                            <Card
-                                                shadow="sm"
-                                                p="lg"
-                                                radius="md"
-                                                withBorder
-                                                key={item.title}
-                                            >
-                                                <Group
-                                                    position="apart"
-                                                    mt="md"
-                                                    mb="xs"
+                                        collections.breakfast
+                                            .filter(
+                                                (item) =>
+                                                    item.type === type || !type
+                                            )
+                                            .map((item) => (
+                                                <Card
+                                                    shadow="sm"
+                                                    p="lg"
+                                                    radius="md"
+                                                    withBorder
+                                                    key={item.title}
                                                 >
-                                                    <Badge
-                                                        color="lime"
-                                                        variant="light"
-                                                        size="xs"
+                                                    <Group
+                                                        position="apart"
+                                                        mt="md"
+                                                        mb="xs"
                                                     >
-                                                        {item.type}
-                                                    </Badge>
-                                                </Group>
-                                                <Text
-                                                    size="md"
-                                                    color="lime"
-                                                    sx={{
-                                                        fontWeight: "bold",
-                                                    }}
-                                                >
-                                                    {item.title}
-                                                </Text>
-                                            </Card>
-                                        )) //else if no items are found
+                                                        <Badge
+                                                            color="lime"
+                                                            variant="light"
+                                                            size="xs"
+                                                        >
+                                                            {item.type}
+                                                        </Badge>
+                                                    </Group>
+                                                    <Text
+                                                        size="md"
+                                                        color="lime"
+                                                        sx={{
+                                                            fontWeight: "bold",
+                                                        }}
+                                                    >
+                                                        {item.title}
+                                                    </Text>
+                                                </Card>
+                                            )) //else if no items are found
                                     }
                                 </SimpleGrid>
                             </Group>
@@ -748,41 +768,43 @@ function Menu() {
                                     ]}
                                 >
                                     {
-                                        KebabsTandoor.filter(
-                                            (item) =>
-                                                item.type === type || !type
-                                        ).map((item) => (
-                                            <Card
-                                                shadow="sm"
-                                                p="lg"
-                                                radius="md"
-                                                withBorder
-                                                key={item.title}
-                                            >
-                                                <Group
-                                                    position="apart"
-                                                    mt="md"
-                                                    mb="xs"
+                                        collections.kebabstandoor
+                                            .filter(
+                                                (item) =>
+                                                    item.type === type || !type
+                                            )
+                                            .map((item) => (
+                                                <Card
+                                                    shadow="sm"
+                                                    p="lg"
+                                                    radius="md"
+                                                    withBorder
+                                                    key={item.title}
                                                 >
-                                                    <Badge
-                                                        color="lime"
-                                                        variant="light"
-                                                        size="xs"
+                                                    <Group
+                                                        position="apart"
+                                                        mt="md"
+                                                        mb="xs"
                                                     >
-                                                        {item.type}
-                                                    </Badge>
-                                                </Group>
-                                                <Text
-                                                    size="md"
-                                                    color="lime"
-                                                    sx={{
-                                                        fontWeight: "bold",
-                                                    }}
-                                                >
-                                                    {item.title}
-                                                </Text>
-                                            </Card>
-                                        )) //else if no items are found
+                                                        <Badge
+                                                            color="lime"
+                                                            variant="light"
+                                                            size="xs"
+                                                        >
+                                                            {item.type}
+                                                        </Badge>
+                                                    </Group>
+                                                    <Text
+                                                        size="md"
+                                                        color="lime"
+                                                        sx={{
+                                                            fontWeight: "bold",
+                                                        }}
+                                                    >
+                                                        {item.title}
+                                                    </Text>
+                                                </Card>
+                                            )) //else if no items are found
                                     }
                                 </SimpleGrid>
                             </Group>
@@ -807,7 +829,7 @@ function Menu() {
                                     ]}
                                 >
                                     {
-                                        Desserts.map((item) => (
+                                        collections.desserts.map((item) => (
                                             <Card
                                                 shadow="sm"
                                                 p="lg"
@@ -863,7 +885,7 @@ function Menu() {
                                     ]}
                                 >
                                     {
-                                        Drinks.map((item) => (
+                                        collections.drinks.map((item) => (
                                             <Card
                                                 shadow="sm"
                                                 p="lg"
@@ -954,4 +976,81 @@ function Table({
             <div className={classes.links}>{items}</div>
         </div>
     )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    const query = `
+    {
+  "appetizerssides": *[_type == "appetizerssides"]{
+    _id,
+    title,
+    type,
+    price,
+   },
+  "bread": *[_type == 'bread']{
+    _id,
+    title,
+    type,
+    price,
+   },
+    "breakfast": *[_type == 'breakfast']{
+    _id,
+    title,
+    type,
+    price,
+   },
+      "desserts": *[_type == 'desserts']{
+    _id,
+    title,
+    type,
+    price,
+   },
+      "drinks": *[_type == 'drinks']{
+    _id,
+    title,
+    type,
+    price,
+   },
+      "entrees": *[_type == 'entrees']{
+    _id,
+    title,
+    type,
+    price,
+   },
+      "kebabstandoor": *[_type == 'kebabstandoor']{
+    _id,
+    title,
+    type,
+    price,
+   },
+       "kids": *[_type == 'kids']{
+    _id,
+    title,
+    type,
+    price,
+   },
+       "noodles": *[_type == 'noodles']{
+    _id,
+    title,
+    type,
+    price,
+   },
+       "ricedish": *[_type == 'ricedish']{
+    _id,
+    title,
+    type,
+    price,
+   }
+}
+`
+
+    const collections = await sanityClient.fetch(query).catch((err) => {
+        console.log(err)
+    })
+    console.log(collections)
+    return {
+        props: {
+            collections,
+        },
+    }
 }
