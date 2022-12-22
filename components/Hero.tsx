@@ -1,15 +1,17 @@
 import { createStyles, Container, Title, Text, Button } from "@mantine/core"
 import Link from "next/link"
+import { urlFor } from "../sanity"
+import { HomeData } from "../typings"
 
 const useStyles = createStyles((theme) => ({
     root: {
         backgroundColor: "#437200",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundImage:
-            "linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #194f24d0 70%), url('/PistaHouse-1-69 Large.jpeg')",
-        paddingTop: theme.spacing.xl * 6,
-        paddingBottom: theme.spacing.xl * 6,
+        // backgroundImage:
+        //     "linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #194f24d0 70%), url('/PistaHouse-1-69 Large.jpeg')",
+        paddingTop: theme.spacing.xl * 8,
+        paddingBottom: theme.spacing.xl * 8,
     },
 
     inner: {
@@ -73,11 +75,20 @@ const useStyles = createStyles((theme) => ({
         },
     },
 }))
-
-function Hero() {
+interface Props {
+    homeData: HomeData
+}
+function Hero({ homeData }: Props) {
     const { classes } = useStyles()
     return (
-        <div className={classes.root}>
+        <div
+            className={classes.root}
+            style={{
+                backgroundImage: `linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #194f24d0 70%), url(${urlFor(
+                    homeData.homeImage
+                ).url()})`,
+            }}
+        >
             <Container size="lg">
                 <div className={classes.inner}>
                     <div className={classes.content}>
@@ -92,18 +103,14 @@ function Hero() {
                                     to: "lime.4",
                                 }}
                             >
-                                Fast & <br /> Authentic Food
+                                {homeData.title}
                             </Text>{" "}
                             <br />
-                            in Just Minutes
+                            {homeData.subtitle}
                         </Title>
 
                         <Text className={classes.description} mt={30}>
-                            We are dedicated to providing you with the finest
-                            Indian food and catering. Browse our menu and call
-                            to order in advance. <br /> We are specialized in
-                            Live Kebabs, Chat, Dosa and all of your favorite
-                            Indian dishes.
+                            {homeData.description}
                         </Text>
                         <Link href="/menu">
                             <Button
@@ -125,3 +132,4 @@ function Hero() {
 }
 
 export default Hero
+
