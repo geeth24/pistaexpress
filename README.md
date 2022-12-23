@@ -6,7 +6,7 @@
 
 Pista Express's Website allows  users to view dine-in menu and the catering setup layout gallery.
 
-It also allows Pista Express's staff to edit the website using Sanity.io
+It also allows Pista Express's staff to edit the website using Sanity.io.
 
 
 
