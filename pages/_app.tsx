@@ -11,6 +11,7 @@ import { GetServerSidePropsContext } from "next"
 import { getCookie, setCookie } from "cookies-next"
 import { useHotkeys } from "@mantine/hooks"
 import Layout from "../components/Layout"
+import Script from "next/script"
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     const { Component, pageProps } = props
@@ -39,6 +40,19 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                     content="minimum-scale=1, initial-scale=1, width=device-width"
                 />
             </Head>
+            <Script
+                src="https://www.googletagmanager.com/gtag/js?id=G-M5GJEB85L2"
+                strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+                {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-M5GJEB85L2');
+        `}
+            </Script>
 
             <ColorSchemeProvider
                 colorScheme={colorScheme}
