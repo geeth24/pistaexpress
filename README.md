@@ -1,31 +1,61 @@
-
-![Logo](https://pistaexpress.com/PistaExpress250.png)
-
-
 # Pista Express
 
-Pista Express's Website allows  users to view dine-in menu and the catering setup layout gallery.
-
-It also allows Pista Express's staff to edit the website using Sanity.io.
-
-
-
-
-
-## Demo
-https://pistaexpress.com
-
-
-## Features
-
-- View Dine In Menu
-- Contact Pista Express
-- Edit Website using Sanity.io
-
+Authentic Hyderabadi Indian cuisine delivered fast and fresh.
 
 ## Tech Stack
 
-**Client:** Next.js, Mantine UI, Framer Motion
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **CMS**: Sanity.io
+- **Package Manager**: Bun
 
-**Server:** Sanity.io
+## Getting Started
 
+1. Install dependencies:
+```bash
+bun install
+```
+
+2. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
+
+Required variables:
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`
+- `NEXT_PUBLIC_SANITY_DATASET`
+- `SANITY_API_TOKEN`
+
+3. Run the development server:
+```bash
+bun run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see the site.
+
+## Sanity Studio
+
+Access the Sanity Studio at [http://localhost:3000/studio](http://localhost:3000/studio) to manage menu items and content.
+
+## Project Structure
+
+```
+src/
+├── app/              # Next.js App Router pages
+├── components/       # Reusable React components
+├── sanity/          # Sanity configuration & schemas
+│   ├── lib/         # Sanity client & utilities
+│   └── schemaTypes/ # Content schemas
+└── lib/             # Utility functions
+```
+
+## Deployment
+
+Deploy on Vercel:
+
+```bash
+vercel
+```
+
+Make sure to set the environment variables in your Vercel project settings.

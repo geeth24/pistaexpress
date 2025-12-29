@@ -1,25 +1,20 @@
-import { defineConfig } from "sanity"
-import { deskTool } from "sanity/desk"
-import { visionTool } from "@sanity/vision"
-import { schemaTypes } from "./schemas"
-import { myStructure } from "./deskStructure"
+'use client'
 
+import { visionTool } from '@sanity/vision'
+import { defineConfig } from 'sanity'
+import { structureTool } from 'sanity/structure'
+
+import { apiVersion, dataset, projectId } from './src/sanity/env'
+import { schema } from './src/sanity/schemaTypes'
+import { structure } from './src/sanity/structure'
 
 export default defineConfig({
-    basePath: "/cms",
-    name: "default",
-    title: "pistaexpress",
-
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-    plugins: [
-        deskTool({
-            structure: myStructure,
-        }),
-        visionTool(),
-    ],
-
-    schema: {
-        types: schemaTypes,
-    },
+  basePath: '/studio',
+  projectId,
+  dataset,
+  schema,
+  plugins: [
+    structureTool({ structure }),
+    visionTool({ defaultApiVersion: apiVersion }),
+  ],
 })

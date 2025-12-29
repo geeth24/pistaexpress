@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Darker green - matching old Pista Express */
+  --color-primary: #65a30d;
+  --color-primary-light: #84cc16;
+  --color-primary-dark: #4d7c0f;
+
+  --color-background: #000000;
+  --color-background-dark: #0a0a0a;
+  --color-background-card: #141414;
+
+  --color-text: #f8f9fa;
+  --color-text-light: #a1a1aa;
+  --color-text-dark: #ffffff;
+  --color-text-inverse: #f8f9fa;
+
+  --color-accent: #f58634;
+  --color-accent-light: #ffab70;
+
+  --color-success: #2ecc71;
+  --color-error: #e74c3c;
+
+  --font-philosopher: 'Philosopher', sans-serif;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility container-padding {
+  @apply px-4 md:px-8 lg:px-12 xl:px-16;
+}
+
+@utility section-padding {
+  @apply py-12 md:py-16 lg:py-24;
+}
+
+@utility primary-button {
+  @apply rounded-full bg-primary px-6 py-2 font-medium text-white transition-all duration-300 hover:bg-primary-dark active:scale-95 cursor-pointer inline-flex items-center justify-center gap-2;
+}
+
+@utility outline-button {
+  @apply rounded-full border border-primary bg-transparent px-6 py-2 font-medium text-primary transition-all duration-300 hover:bg-primary/10 active:scale-95 cursor-pointer inline-flex items-center justify-center gap-2;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-philosopher);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-dark);
+    font-family: var(--font-philosopher);
+  }
+}
