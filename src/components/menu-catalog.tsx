@@ -2,8 +2,7 @@
 
 import { Search } from "lucide-react"
 import { useEffect, useState } from "react"
-import { pickupSnapshot, type MenuItem, type MenuSection } from "@/lib/menu"
-import { restaurant } from "@/lib/restaurant"
+import type { MenuSection } from "@/lib/menu"
 
 const diets = ["All dishes", "Vegetarian", "Non-vegetarian"] as const
 type Diet = typeof diets[number]
@@ -13,18 +12,6 @@ function matchesDiet(type: string, diet: Diet) {
   if (diet === "Vegetarian") return normalized.includes("veg") && !normalized.includes("non")
   if (diet === "Non-vegetarian") return /non|chicken|mutton|goat|lamb|seafood|fish|egg/.test(normalized)
   return true
-}
-
-function MenuItems({ items }: { items: MenuItem[] }) {
-  if (items.length === 0) return null
-
-  return (
-    <ul className="menu-items">
-      {items.map(({ _id, title, type }) => (
-        <li key={_id}><h3>{title}</h3>{type && <small>{type}</small>}</li>
-      ))}
-    </ul>
-  )
 }
 
 export function MenuCatalog({ sections }: { sections: MenuSection[] }) {
@@ -74,25 +61,16 @@ export function MenuCatalog({ sections }: { sections: MenuSection[] }) {
               {matches.map(({ key, name }) => <a href={`#${key}`} key={key}>{name}</a>)}
             </nav>
             <div className="menu-sections">
-              {matches.map(({ key, name, items }) => {
-                const restaurantItems = items.filter(({ source }) => source !== "pickup")
-                const pickupItems = items.filter(({ source }) => source === "pickup")
-
-                return (
-                  <section id={key} className="menu-section" key={key} aria-labelledby={`${key}-heading`}>
-                    <h2 id={`${key}-heading`}>{name}</h2>
-                    <MenuItems items={restaurantItems} />
-                    {pickupItems.length > 0 && (
-                      <>
-                        <p className="menu-source-note">
-                          <a href={restaurant.order}>DoorDash pickup examples</a> · checked <time dateTime={pickupSnapshot.date}>{pickupSnapshot.label}</time>
-                        </p>
-                        <MenuItems items={pickupItems} />
-                      </>
-                    )}
-                  </section>
-                )
-              })}
+              {matches.map(({ key, name, items }) => (
+                <section id={key} className="menu-section" key={key} aria-labelledby={`${key}-heading`}>
+                  <h2 id={`${key}-heading`}>{name}</h2>
+                  <ul className="menu-items">
+                    {items.map(({ _id, title, type }) => (
+                      <li key={_id}><h3>{title}</h3>{type && <small>{type}</small>}</li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
             </div>
           </>
         ) : (
