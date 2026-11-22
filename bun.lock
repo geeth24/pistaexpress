@@ -6,7 +6,7 @@
       "name": "v2",
       "dependencies": {
         "@fontsource-variable/dm-sans": "^5.3.0",
-        "@fontsource/barlow-condensed": "^5.3.0",
+        "@fontsource/philosopher": "^5.3.0",
         "@headlessui/react": "^2.2.9",
         "@heroicons/react": "^2.2.0",
         "@sanity/image-url": "^2.0.2",
@@ -498,7 +498,7 @@
 
     "@fontsource-variable/dm-sans": ["@fontsource-variable/dm-sans@5.3.0", "", {}, "sha512-BpUG5bqePiDFMBM4ZtLSlPdAIOM990uB1dlXzIf4aw21yQR7BmykedLXXXMqGWsR18aMLOsbWccwJNh3ztTQaA=="],
 
-    "@fontsource/barlow-condensed": ["@fontsource/barlow-condensed@5.3.0", "", {}, "sha512-RA7MmIx0v3eQ6Gcf74qLVLOwLB0GpPOzx+eU9iG/AmCnSJGcIWYeU8y6CEMGZ210MGwGg5CZhzLkkvyZdTTk1g=="],
+    "@fontsource/philosopher": ["@fontsource/philosopher@5.3.0", "", {}, "sha512-jeycHVDesgFOcJkcsloZSqW/iVDAPd0/a9O5VRI3jmoIn1rNgedhJfosZpQttZHfsT+p28aLTmS61wAEjf9ljA=="],
 
     "@grpc/grpc-js": ["@grpc/grpc-js@1.9.15", "", { "dependencies": { "@grpc/proto-loader": "^0.7.8", "@types/node": ">=12.12.47" } }, "sha512-nqE7Hc0AzI+euzUwDAy0aY5hCp10r734gMGRdU+qOPX0XSceI2ULrcXB5U2xSc5VkWwalCj4M7GzCAygZl2KoQ=="],
 

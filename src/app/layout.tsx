@@ -12,7 +12,7 @@ const bodyFont = localFont({
   weight: "100 1000",
 })
 const displayFont = localFont({
-  src: "../../node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff2",
+  src: "../../node_modules/@fontsource/philosopher/files/philosopher-latin-700-normal.woff2",
   variable: "--display-face",
   weight: "700",
 })
@@ -36,7 +36,7 @@ const restaurantData = {
   email: restaurant.email,
   servesCuisine: ["Hyderabadi", "Indian"],
   menu: restaurant.origin + "/menu",
-  logo: restaurant.origin + "/PistaExpress.png",
+  logo: restaurant.origin + "/images/express-brand.svg",
   geo: { "@type": "GeoCoordinates", ...restaurant.coordinates },
   hasMap: restaurant.reviews,
   address: {

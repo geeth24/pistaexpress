@@ -48,7 +48,7 @@ export function Navbar() {
     <header className="site-header">
       <div className="wrap header-inner">
         <Link className="wordmark" href="/" aria-label="Pista Express home">
-          <Image src="/images/express-logo.webp" alt="" width={172} height={69} preload />
+          <Image src="/images/express-brand.svg" alt="" width={352} height={69} preload unoptimized />
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
           {navigation.map(({ href, label }) => (
@@ -78,7 +78,9 @@ export function Navbar() {
         <DialogPanel className="mobile-panel" transition>
           <div className="mobile-top">
             <DialogTitle className="sr-only">Pista Express navigation</DialogTitle>
-            <Image className="mobile-logo" src="/images/express-logo.webp" alt="Pista Express" width={172} height={69} />
+            <span className="wordmark">
+              <Image src="/images/express-brand.svg" alt="" width={352} height={69} unoptimized />
+            </span>
             <button className="icon-button" type="button" aria-label="Close navigation" onClick={() => setOpen(false)}>
               <X aria-hidden="true" />
             </button>

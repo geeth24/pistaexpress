@@ -30,7 +30,7 @@ export default function CateringPage() {
           </div>
           <figure>
             <div className="photo-frame">
-              <Image src="/images/express-catering.webp" alt="Illustration of biryani and tandoori chicken in serving trays" fill preload unoptimized />
+              <Image src="/images/express-catering.webp" alt="Illustration of biryani and tandoori chicken in serving trays" fill preload sizes="(max-width: 760px) 90vw, (max-width: 1100px) 40vw, 510px" />
             </div>
             <figcaption className="photo-note">Serving illustration</figcaption>
           </figure>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { unstable_cache } from "next/cache"
+import { connection } from "next/server"
 import { ArrowUpRight } from "lucide-react"
 import { MenuCatalog } from "@/components/menu-catalog"
 import { buildMenuSections, menuCategories, type SanityDish } from "@/lib/menu"
@@ -33,6 +34,7 @@ async function loadMenu() {
 }
 
 export default async function MenuPage() {
+  await connection()
   const sections = await loadMenu()
 
   return (

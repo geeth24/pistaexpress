@@ -18,6 +18,7 @@ export interface MenuItem {
   _id: string
   title: string
   type?: string
+  source?: "pickup"
 }
 
 export interface MenuSection {
@@ -25,6 +26,8 @@ export interface MenuSection {
   name: string
   items: MenuItem[]
 }
+
+export const pickupSnapshot = { date: "2026-11-21", label: "Nov 21, 2026" }
 
 type PickupDish = [title: string, type?: "Vegetarian" | "Non-vegetarian"]
 
@@ -69,7 +72,7 @@ export function buildMenuSections(items: SanityDish[]): MenuSection[] {
   return menuCategories.map((section) => {
     const extraItems = (pickupDishes[section.key] ?? [])
       .filter(([title]) => !existing.has(dishKey(title)))
-      .map(([title, type]) => ({ _id: "pickup-" + dishKey(title), title, type }))
+      .map(([title, type]): MenuItem => ({ _id: "pickup-" + dishKey(title), title, type, source: "pickup" }))
 
     return {
       ...section,

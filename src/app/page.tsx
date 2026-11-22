@@ -40,35 +40,38 @@ export default function Home() {
         <div className="wrap hero-grid">
           <div className="hero-copy">
             <p className="eyebrow"><span /> Hyderabadi Indian kitchen</p>
-            <h1>Hyderabad.<br /><em>West Texas.</em></h1>
+            <h1>Hyderabadi cooking in Midland.</h1>
             <p className="lede">
               Dum biryani, tandoori favorites, and warm breads on Fortress Drive in Midland.
             </p>
             <div className="actions">
-              <a className="button" href={restaurant.order}>Order pickup <ArrowUpRight aria-hidden="true" /></a>
-              <Link className="text-link" href="/menu">Browse the menu <ArrowRight aria-hidden="true" /></Link>
+              <Link className="button" href="/menu">Browse the menu <ArrowRight aria-hidden="true" /></Link>
+              <a className="text-link" href={restaurant.order}>Order pickup <ArrowUpRight aria-hidden="true" /></a>
             </div>
           </div>
-          <figure className="hero-figure">
-            <div className="hero-art">
-              <div className="hero-ring" aria-hidden="true" />
-              <Image
-                src="/images/midland-biryani.webp"
-                alt="Illustration of Hyderabadi chicken dum biryani with fried onions, herbs, and lemon"
-                fill
-                preload
-                unoptimized
-              />
-            </div>
-            <figcaption>Dum biryani <span aria-hidden="true" /> A Hyderabadi staple</figcaption>
-          </figure>
+          <div className="hero-stage">
+            <figure className="hero-figure">
+              <div className="hero-art">
+                <div className="hero-ring" aria-hidden="true" />
+                <Image
+                  src="/images/midland-biryani.webp"
+                  alt="Illustration of Hyderabadi chicken dum biryani with fried onions, herbs, and lemon"
+                  fill
+                  preload
+                  sizes="(max-width: 760px) 76vw, (max-width: 1100px) 40vw, 488px"
+                />
+              </div>
+              <figcaption>Dum biryani <span aria-hidden="true" /> A Hyderabadi staple</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
-      <div className="location-strip">
-        <div className="wrap">
-          <Link href="/contact"><MapPin aria-hidden="true" size={18} /> {restaurant.street} · Midland, TX</Link>
-          <a href={restaurant.directions}>Get directions <ArrowUpRight aria-hidden="true" size={18} /></a>
-        </div>
+      <div className="wrap hero-location">
+        <Link href="/contact">
+          <MapPin aria-hidden="true" size={18} />
+          <span><strong>{restaurant.street}</strong><small>{restaurant.location}</small></span>
+        </Link>
+        <a className="text-link" href={restaurant.directions}>Get directions <ArrowUpRight aria-hidden="true" size={18} /></a>
       </div>
       <section className="wrap section-space kitchen-section">
         <div className="section-lead">
