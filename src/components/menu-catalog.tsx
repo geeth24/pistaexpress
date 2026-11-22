@@ -1,7 +1,7 @@
 "use client"
 
 import { Search } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { pickupSnapshot, type MenuItem, type MenuSection } from "@/lib/menu"
 import { restaurant } from "@/lib/restaurant"
 
@@ -28,6 +28,20 @@ function MenuItems({ items }: { items: MenuItem[] }) {
 }
 
 export function MenuCatalog({ sections }: { sections: MenuSection[] }) {
+  useEffect(() => {
+    const hash = window.location.hash
+    const section = document.getElementById(hash.slice(1))
+    if (!section?.classList.contains("menu-section")) return
+
+    // Next can miss a fragment while the streamed menu is still loading.
+    const frame = window.requestAnimationFrame(() => {
+      if (window.location.hash === hash && window.scrollY < 2) {
+        section.scrollIntoView({ block: "start" })
+      }
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [])
+
   const [search, setSearch] = useState("")
   const [diet, setDiet] = useState<Diet>("All dishes")
   const keyword = search.trim().toLowerCase()
