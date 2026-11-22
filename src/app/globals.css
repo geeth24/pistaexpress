@@ -333,12 +333,6 @@ small { font-size: 0.82rem; }
 .menu-items li { display: flex; justify-content: space-between; align-items: baseline; gap: 0.55rem; border-top: 1px solid var(--line); padding-block: 0.58rem; }
 .menu-items li h3 { min-width: 0; font: 700 1rem/1.4 var(--body); overflow-wrap: anywhere; }
 .menu-items small { flex: none; max-width: 37%; color: var(--muted); text-align: right; overflow-wrap: anywhere; }
-.menu-source-note {
-  margin-block: 0.8rem 0.45rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-.menu-source-note a { color: var(--accent); font-weight: 650; text-decoration: underline; text-underline-offset: 0.2em; }
 .menu-message { color: var(--muted); }
 .menu-message .actions { margin-top: 0.85rem; }
 
