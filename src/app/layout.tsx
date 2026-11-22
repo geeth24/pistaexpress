@@ -1,31 +1,65 @@
 import type { Metadata } from "next"
+import localFont from "next/font/local"
+import { ThemeProvider } from "next-themes"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
+import { restaurant } from "@/lib/restaurant"
 import "./globals.css"
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
+
+const bodyFont = localFont({
+  src: "../../node_modules/@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2",
+  variable: "--body-face",
+  weight: "100 1000",
+})
+const displayFont = localFont({
+  src: "../../node_modules/@fontsource/philosopher/files/philosopher-latin-700-normal.woff2",
+  variable: "--display-face",
+  weight: "700",
+})
 
 export const metadata: Metadata = {
-  title: "Pista Express | Authentic Indian Cuisine",
-  description: "Experience the royal flavors of Hyderabad at Pista Express. Authentic biryanis, kebabs, and more.",
+  metadataBase: new URL(restaurant.origin),
+  title: {
+    default: "Pista Express | Hyderabadi Indian Restaurant in Midland, TX",
+    template: "%s | Pista Express",
+  },
+  description: "Find Hyderabadi dum biryani, tandoori dishes, and breads at Pista Express on Fortress Drive in Midland, Texas. Browse the menu or order pickup.",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+const restaurantData = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "@id": restaurant.origin + "/#restaurant",
+  name: restaurant.name,
+  url: restaurant.origin,
+  telephone: restaurant.tel.slice(4),
+  email: restaurant.email,
+  servesCuisine: ["Hyderabadi", "Indian"],
+  menu: restaurant.origin + "/menu",
+  logo: restaurant.origin + "/PistaExpress.png",
+  geo: { "@type": "GeoCoordinates", ...restaurant.coordinates },
+  hasMap: restaurant.reviews,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: restaurant.street,
+    addressLocality: "Midland",
+    addressRegion: "TX",
+    postalCode: "79706",
+    addressCountry: "US",
+  },
+}
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="antialiased min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-grow pt-20 overflow-x-hidden">
-          {children}
-        </main>
-        <Footer />
+    <html lang="en" suppressHydrationWarning className={`${displayFont.variable} ${bodyFont.variable}`}>
+      <body>
+        <ThemeProvider attribute="data-theme" defaultTheme="system" disableTransitionOnChange>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantData) }} />
+          <a className="skip-link" href="#main">Skip to content</a>
+          <Navbar />
+          <main id="main" tabIndex={-1}>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -1,0 +1,369 @@
+.express-home-hero {
+  overflow: clip;
+  background:
+    radial-gradient(ellipse at 82% 55%, var(--hero-field), transparent 45%),
+    radial-gradient(ellipse at 94% 90%, var(--hero-warmth), transparent 41%),
+    radial-gradient(ellipse at 38% 108%, var(--hero-glow), transparent 52%),
+    var(--paper);
+}
+
+.express-home-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+  align-items: center;
+  gap: clamp(1rem, 4vw, 4.5rem);
+  padding-block: clamp(2.5rem, 5vw, 5.5rem) clamp(2.1rem, 4.5vw, 4.75rem);
+}
+
+.express-home-opening {
+  position: relative;
+  z-index: 1;
+}
+
+.express-home-label {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .6rem;
+  color: var(--accent);
+  font-size: .73rem;
+  font-weight: 780;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.express-home-label > span {
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background: var(--brand-orange);
+}
+
+.express-home-opening h1 {
+  margin-block: .23em .24em;
+  font-size: clamp(2.75rem, 5.1vw, 5.5rem);
+  line-height: .95;
+  text-wrap: wrap;
+}
+
+.express-home-opening h1 span {
+  display: block;
+  color: var(--accent);
+}
+
+.express-home-opening > p:not(.express-home-label),
+.express-home-visit p:not(.express-home-label) {
+  max-width: 39ch;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
+}
+
+.express-home-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .65rem clamp(.85rem, 2.3vw, 1.7rem);
+  margin-top: clamp(1.4rem, 3vw, 2rem);
+}
+
+.express-home-actions .button {
+  min-height: 3rem;
+}
+
+.express-home-plate {
+  width: min(100%, 36.5rem);
+  justify-self: center;
+  margin-bottom: -.5rem;
+}
+
+.express-home-plate-art {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.express-home-plate-art img {
+  padding: 6%;
+  object-fit: contain;
+  filter: drop-shadow(0 .7rem 1rem var(--shadow));
+}
+
+.express-home-rings,
+.express-home-rings::before {
+  position: absolute;
+  inset: 5%;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--hero-line), transparent 47%);
+}
+
+.express-home-rings::before {
+  content: "";
+  inset: -3%;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotate(-34deg);
+}
+
+.express-home-rings::after {
+  position: absolute;
+  content: "";
+  top: 9%;
+  right: 15%;
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  background: var(--brand-orange);
+  outline: 3px solid var(--paper);
+}
+
+.express-home-plate figcaption,
+.express-home-dosa figcaption {
+  color: var(--muted);
+  font-size: .76rem;
+  font-weight: 650;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+
+.express-home-plate figcaption {
+  margin-top: .75rem;
+  text-align: center;
+}
+
+.express-home-service {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-block: 1px solid var(--line);
+}
+
+.express-home-service > a {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: .8rem;
+  padding: 1.15rem clamp(.7rem, 2.5vw, 2rem);
+}
+
+.express-home-service > a:first-child {
+  padding-inline-start: 0;
+}
+
+.express-home-service > a + a {
+  border-inline-start: 1px solid var(--line);
+}
+
+.express-home-service svg,
+.express-home-menu li svg,
+.express-home-visit address > svg {
+  width: 1.15rem;
+  flex: none;
+  color: var(--accent);
+}
+
+.express-home-service a:hover strong,
+.express-home-menu li a:hover h3 {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: .23em;
+}
+
+.express-home-service strong,
+.express-home-service small {
+  display: block;
+}
+
+.express-home-service small {
+  color: var(--muted);
+}
+
+.express-home-kitchen {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(2rem, 6.5vw, 6rem);
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.express-home-dosa > div {
+  position: relative;
+  aspect-ratio: .94;
+  background: var(--ticket);
+}
+
+.express-home-dosa figcaption {
+  margin-top: .7rem;
+}
+
+.express-home-menu ul {
+  margin-block: 1.45rem .6rem;
+  border-top: 1px solid var(--line);
+}
+
+.express-home-menu li {
+  border-bottom: 1px solid var(--line);
+}
+
+.express-home-menu li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.05rem;
+  padding: .9rem 0;
+}
+
+.express-home-menu li h3 {
+  margin-bottom: .22rem;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  letter-spacing: -.025em;
+  text-wrap: wrap;
+}
+
+.express-home-menu li p {
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.express-home-reviews {
+  border-block: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 78% 93%, var(--hero-field), transparent 68%),
+    var(--ticket);
+}
+
+.express-home-review-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  padding-block: clamp(3.5rem, 6vw, 6rem);
+}
+
+.express-home-review-intro .text-link {
+  margin-top: .65rem;
+}
+
+.express-home-review-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem 1.6rem;
+}
+
+.express-home-review-list figure {
+  border-top: 1px solid var(--line);
+  padding-block: .85rem .3rem;
+}
+
+.express-home-review-list figure:first-child {
+  grid-column: 1 / -1;
+}
+
+.express-home-review-list blockquote {
+  font: 700 clamp(1.28rem, 2.25vw, 2rem)/1.13 var(--display);
+}
+
+.express-home-review-list figure:first-child blockquote {
+  font-size: clamp(1.65rem, 3.8vw, 3rem);
+  max-width: 27ch;
+}
+
+.express-home-review-list figcaption {
+  margin-top: .55rem;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.express-home-visit {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .65fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.express-home-visit h2 {
+  margin-block: .34em .28em;
+}
+
+.express-home-visit address {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border-inline-start: 1px solid var(--line);
+  padding: .3rem 0 .3rem clamp(1rem, 3vw, 2.5rem);
+}
+
+.express-home-visit address strong {
+  margin-block: .55rem .15rem;
+  font: 700 clamp(1.5rem, 3.55vw, 2.65rem)/1.05 var(--display);
+}
+
+.express-home-visit address > span {
+  color: var(--muted);
+}
+
+.express-home-visit address > .text-link {
+  margin-top: .5rem;
+}
+
+@media (max-width: 740px) {
+  .express-home-hero-grid,
+  .express-home-kitchen,
+  .express-home-review-layout,
+  .express-home-visit {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .express-home-hero-grid {
+    gap: 1.75rem;
+    padding-block: 2.15rem 1.9rem;
+  }
+
+  .express-home-opening h1 {
+    font-size: clamp(3.05rem, 11vw, 4.5rem);
+  }
+
+  .express-home-plate {
+    width: min(94%, 29rem);
+  }
+
+  .express-home-service {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .express-home-service > a:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--line);
+    border-inline-start: 0;
+    padding-inline-start: 0;
+  }
+
+  .express-home-kitchen > figure {
+    grid-row: 2;
+  }
+
+  .express-home-dosa > div {
+    aspect-ratio: 1.35;
+  }
+
+  .express-home-review-list {
+    column-gap: 1rem;
+  }
+
+  .express-home-visit address {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 1.15rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .express-home-service {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .express-home-service > a + a {
+    border-inline-start: 0;
+    border-top: 1px solid var(--line);
+    padding-inline-start: 0;
+  }
+}

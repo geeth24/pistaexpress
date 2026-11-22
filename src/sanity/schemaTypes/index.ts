@@ -11,6 +11,7 @@ import KebabsTandoor from './menu/KebabsTandoor'
 import Kids from './menu/Kids'
 import Noodles from './menu/Noodles'
 import RiceDish from './menu/RiceDish'
+import pulav from './menu/pulav'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -25,5 +26,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     Kids,
     Noodles,
     RiceDish,
+    pulav,
   ],
 }
