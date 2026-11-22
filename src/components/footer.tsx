@@ -10,7 +10,7 @@ export function Footer() {
         <div className="footer-main">
           <div>
             <Link className="wordmark" href="/">
-              <Image src="/images/express-brand.svg" alt="Pista Express home" width={352} height={69} unoptimized />
+              <Image src="/PistaExpress.png" alt="Pista Express home" width={1024} height={464} unoptimized />
             </Link>
             <p>Hyderabadi Indian kitchen in Midland, Texas.</p>
           </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Suspense } from "react"
 import { unstable_cache } from "next/cache"
 import { connection } from "next/server"
 import { ArrowUpRight } from "lucide-react"
@@ -28,43 +29,50 @@ const fetchMenu = unstable_cache(
 async function loadMenu() {
   try {
     return buildMenuSections(await fetchMenu())
-  } catch {
+  } catch (error) {
+    console.error("Unable to load the Pista Express menu", error instanceof Error ? error.name : "UnknownError")
     return []
   }
 }
 
 export default async function MenuPage() {
   await connection()
-  const sections = await loadMenu()
 
   return (
     <>
-      <section className="page-band menu-intro">
-        <div className="wrap page-intro">
-          <div>
-            <p className="eyebrow"><span /> Pista Express · Midland</p>
-            <h1>Find your next order.</h1>
-            <p>Browse by dish, section, or dietary preference. Explore dosas, dum biryani, and pickup favorites like Indo-Chinese noodles and pulav.</p>
-          </div>
-          <aside className="menu-pickup">
-            <h2>Picking up?</h2>
-            <p>Check DoorDash for current prices and availability.</p>
-            <a className="text-link" href={restaurant.order}>Order pickup <ArrowUpRight aria-hidden="true" /></a>
-          </aside>
+      <section className="wrap editorial-opening menu-opening">
+        <div className="editorial-copy">
+          <p className="eyebrow">Pista Express · Midland</p>
+          <h1>The menu</h1>
+          <p>Find dum biryani, tandoori favorites, dosas, and dishes from the Midland pickup menu.</p>
         </div>
+        <aside className="editorial-aside">
+          <p className="eyebrow">Ordering ahead</p>
+          <h2>Pickup on Fortress Drive</h2>
+          <p>DoorDash lists current prices and pickup availability.</p>
+          <a className="text-link" href={restaurant.order}>Order pickup <ArrowUpRight aria-hidden="true" /></a>
+        </aside>
       </section>
-      {sections.length > 0 ? (
-        <MenuCatalog sections={sections} />
-      ) : (
-        <section className="wrap section-space menu-message">
-          <h2>Menu temporarily unavailable</h2>
-          <p>See the current menu on DoorDash or call us at {restaurant.phone}.</p>
-          <div className="actions">
-            <a className="button" href={restaurant.order}>View on DoorDash <ArrowUpRight aria-hidden="true" /></a>
-            <a className="text-link" href={restaurant.tel}>Call the restaurant</a>
-          </div>
-        </section>
-      )}
+      <Suspense fallback={<p className="wrap section-space menu-message" role="status">Loading the menu…</p>}>
+        <MenuBody />
+      </Suspense>
     </>
+  )
+}
+
+async function MenuBody() {
+  const sections = await loadMenu()
+
+  if (sections.length > 0) return <MenuCatalog sections={sections} />
+
+  return (
+    <section className="wrap section-space menu-message">
+      <h2>Menu temporarily unavailable</h2>
+      <p>See the current menu on DoorDash or call us at {restaurant.phone}.</p>
+      <div className="actions">
+        <a className="button" href={restaurant.order}>View on DoorDash <ArrowUpRight aria-hidden="true" /></a>
+        <a className="text-link" href={restaurant.tel}>Call the restaurant</a>
+      </div>
+    </section>
   )
 }

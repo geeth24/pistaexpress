@@ -31,9 +31,8 @@ function ThemeButton() {
   )
 }
 
-export function Navbar() {
+function MobileNavigation({ pathname }: { pathname: string }) {
   const [open, setOpen] = useState(false)
-  const pathname = usePathname()
 
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 951px)")
@@ -45,41 +44,23 @@ export function Navbar() {
   }, [])
 
   return (
-    <header className="site-header">
-      <div className="wrap header-inner">
-        <Link className="wordmark" href="/" aria-label="Pista Express home">
-          <Image src="/images/express-brand.svg" alt="" width={352} height={69} preload unoptimized />
-        </Link>
-        <nav className="desktop-nav" aria-label="Main navigation">
-          {navigation.map(({ href, label }) => (
-            <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}>
-              {label}
-            </Link>
-          ))}
-        </nav>
-        <div className="header-actions">
-          <ThemeButton />
-          <a className="button header-order" href={restaurant.order}>
-            Order pickup <ArrowUpRight aria-hidden="true" />
-          </a>
-          <button
-            className="icon-button mobile-toggle"
-            type="button"
-            aria-label="Open navigation"
-            aria-expanded={open}
-            onClick={() => setOpen(true)}
-          >
-            <Menu aria-hidden="true" />
-          </button>
-        </div>
-      </div>
+    <>
+      <button
+        className="icon-button mobile-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded={open}
+        onClick={() => setOpen(true)}
+      >
+        <Menu aria-hidden="true" />
+      </button>
       <Dialog open={open} onClose={setOpen} className="mobile-dialog">
         <DialogBackdrop className="mobile-backdrop" transition />
         <DialogPanel className="mobile-panel" transition>
           <div className="mobile-top">
             <DialogTitle className="sr-only">Pista Express navigation</DialogTitle>
             <span className="wordmark">
-              <Image src="/images/express-brand.svg" alt="" width={352} height={69} unoptimized />
+              <Image src="/PistaExpress.png" alt="" width={1024} height={464} unoptimized />
             </span>
             <button className="icon-button" type="button" aria-label="Close navigation" onClick={() => setOpen(false)}>
               <X aria-hidden="true" />
@@ -102,6 +83,34 @@ export function Navbar() {
           </a>
         </DialogPanel>
       </Dialog>
+    </>
+  )
+}
+
+export function Navbar() {
+  const pathname = usePathname()
+
+  return (
+    <header className="site-header">
+      <div className="wrap header-inner">
+        <Link className="wordmark" href="/" aria-label="Pista Express home">
+          <Image src="/PistaExpress.png" alt="" width={1024} height={464} preload unoptimized />
+        </Link>
+        <nav className="desktop-nav" aria-label="Main navigation">
+          {navigation.map(({ href, label }) => (
+            <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}>
+              {label}
+            </Link>
+          ))}
+        </nav>
+        <div className="header-actions">
+          <ThemeButton />
+          <a className="button header-order" href={restaurant.order}>
+            Order pickup <ArrowUpRight aria-hidden="true" />
+          </a>
+          <MobileNavigation key={pathname} pathname={pathname} />
+        </div>
+      </div>
     </header>
   )
 }

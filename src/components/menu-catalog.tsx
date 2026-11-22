@@ -52,31 +52,34 @@ export function MenuCatalog({ sections }: { sections: MenuSection[] }) {
           </div>
         </div>
       </section>
-      <div className="wrap section-space">
+      <div className="wrap menu-content">
         {matches.length > 0 ? (
           <>
             <nav className="menu-category" aria-label="Menu sections">
+              <p>Menu sections</p>
               {matches.map(({ key, name }) => <a href={`#${key}`} key={key}>{name}</a>)}
             </nav>
-            {matches.map(({ key, name, items }) => {
-              const restaurantItems = items.filter(({ source }) => source !== "pickup")
-              const pickupItems = items.filter(({ source }) => source === "pickup")
+            <div className="menu-sections">
+              {matches.map(({ key, name, items }) => {
+                const restaurantItems = items.filter(({ source }) => source !== "pickup")
+                const pickupItems = items.filter(({ source }) => source === "pickup")
 
-              return (
-                <section id={key} className="menu-section" key={key} aria-labelledby={`${key}-heading`}>
-                  <h2 id={`${key}-heading`}>{name}</h2>
-                  <MenuItems items={restaurantItems} />
-                  {pickupItems.length > 0 && (
-                    <>
-                      <p className="menu-source-note">
-                        <a href={restaurant.order}>DoorDash pickup examples</a> · checked <time dateTime={pickupSnapshot.date}>{pickupSnapshot.label}</time>
-                      </p>
-                      <MenuItems items={pickupItems} />
-                    </>
-                  )}
-                </section>
-              )
-            })}
+                return (
+                  <section id={key} className="menu-section" key={key} aria-labelledby={`${key}-heading`}>
+                    <h2 id={`${key}-heading`}>{name}</h2>
+                    <MenuItems items={restaurantItems} />
+                    {pickupItems.length > 0 && (
+                      <>
+                        <p className="menu-source-note">
+                          <a href={restaurant.order}>DoorDash pickup examples</a> · checked <time dateTime={pickupSnapshot.date}>{pickupSnapshot.label}</time>
+                        </p>
+                        <MenuItems items={pickupItems} />
+                      </>
+                    )}
+                  </section>
+                )
+              })}
+            </div>
           </>
         ) : (
           <div role="status" className="menu-message">

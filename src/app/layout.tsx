@@ -36,7 +36,7 @@ const restaurantData = {
   email: restaurant.email,
   servesCuisine: ["Hyderabadi", "Indian"],
   menu: restaurant.origin + "/menu",
-  logo: restaurant.origin + "/images/express-brand.svg",
+  logo: restaurant.origin + "/PistaExpress.png",
   geo: { "@type": "GeoCoordinates", ...restaurant.coordinates },
   hasMap: restaurant.reviews,
   address: {
