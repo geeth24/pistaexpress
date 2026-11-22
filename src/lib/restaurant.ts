@@ -11,6 +11,8 @@ export const restaurant = {
   directions: "https://www.google.com/maps/dir/?api=1&destination=3312+Fortress+Dr,+Midland,+TX+79706",
   reviews: "https://maps.app.goo.gl/rAMEQgu1kanFSXu28",
   map: "https://www.google.com/maps?q=3312+Fortress+Dr,+Midland,+TX+79706&output=embed",
+  deliveryReviews: "https://www.doordash.com/en/store/pista-express-midland-24751280/26491947/",
+  hotel: "https://www.wyndhamhotels.com/baymont/midland-texas/baymont-inn-and-suites-midland-airport",
   order: "https://www.doordash.com/store/24751280?pickup=true",
 }
 

@@ -6,18 +6,23 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useSyncExternalStore } from "react"
 import { navigation, restaurant } from "@/lib/restaurant"
+
+function subscribeToHydration() {
+  return () => {}
+}
 
 function ThemeButton() {
   const { resolvedTheme, setTheme } = useTheme()
+  const hydrated = useSyncExternalStore(subscribeToHydration, () => true, () => false)
 
   return (
     <button
       className="icon-button theme-button"
       type="button"
       aria-label="Toggle color theme"
-      aria-pressed={resolvedTheme === "dark"}
+      aria-pressed={hydrated ? resolvedTheme === "dark" : undefined}
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       <Moon className="theme-moon" aria-hidden="true" />

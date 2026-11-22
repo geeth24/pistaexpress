@@ -1,30 +1,32 @@
 import type { Metadata } from "next"
+import { unstable_cache } from "next/cache"
 import { ArrowUpRight } from "lucide-react"
 import { MenuCatalog } from "@/components/menu-catalog"
-import { menuCategories, type CategoryKey, type MenuItem } from "@/lib/menu"
+import { buildMenuSections, menuCategories, type SanityDish } from "@/lib/menu"
 import { restaurant } from "@/lib/restaurant"
 import { client } from "@/sanity/lib/client"
 
 export const metadata: Metadata = {
   title: "Menu",
-  description: "Browse biryani, tandoori specialties, curries, and vegetarian dishes on the Pista Express menu in Midland, Texas.",
+  description: "Browse biryani, tandoori specialties, dosas, noodles, and pulav on the Pista Express menu in Midland, Texas.",
   alternates: { canonical: "/menu" },
 }
 
 const menuQuery = '*[_type in $categories && defined(title)]{_id, title, type, _type}'
-type SanityDish = MenuItem & { _type: CategoryKey }
+
+const fetchMenu = unstable_cache(
+  () => client.fetch<SanityDish[]>(
+    menuQuery,
+    { categories: menuCategories.map(({ key }) => key) },
+    { cache: "no-store", signal: AbortSignal.timeout(8000) },
+  ),
+  ["pista-express-menu"],
+  { revalidate: 300 },
+)
 
 async function loadMenu() {
   try {
-    const items = await client.fetch<SanityDish[]>(
-      menuQuery,
-      { categories: menuCategories.map(({ key }) => key) },
-      { next: { revalidate: 300 }, signal: AbortSignal.timeout(8000) },
-    )
-    return menuCategories.map((section) => ({
-      ...section,
-      items: items.filter((item) => item._type === section.key),
-    })).filter(({ items }) => items.length > 0)
+    return buildMenuSections(await fetchMenu())
   } catch {
     return []
   }
@@ -35,12 +37,18 @@ export default async function MenuPage() {
 
   return (
     <>
-      <section className="wrap page-intro">
-        <p className="eyebrow"><span /> Pista Express · Midland</p>
-        <h1>Find your next order.</h1>
-        <p>Browse the menu by dish, section, or dietary preference. Check DoorDash for current prices and pickup availability.</p>
-        <div className="actions">
-          <a className="button" href={restaurant.order}>Order pickup <ArrowUpRight aria-hidden="true" /></a>
+      <section className="page-band menu-intro">
+        <div className="wrap page-intro">
+          <div>
+            <p className="eyebrow"><span /> Pista Express · Midland</p>
+            <h1>Find your next order.</h1>
+            <p>Browse by dish, section, or dietary preference. Explore dosas, dum biryani, and pickup favorites like Indo-Chinese noodles and pulav.</p>
+          </div>
+          <aside className="menu-pickup">
+            <h2>Picking up?</h2>
+            <p>Check DoorDash for current prices and availability.</p>
+            <a className="text-link" href={restaurant.order}>Order pickup <ArrowUpRight aria-hidden="true" /></a>
+          </aside>
         </div>
       </section>
       {sections.length > 0 ? (
