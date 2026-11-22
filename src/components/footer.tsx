@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 import { navigation, restaurant } from "@/lib/restaurant"
+import { Wordmark } from "@/components/wordmark"
 
 export function Footer() {
   return (
@@ -8,7 +9,9 @@ export function Footer() {
       <div className="wrap">
         <div className="footer-main">
           <div>
-            <Link className="wordmark" href="/" aria-label="Pista Express home" />
+            <Link className="wordmark" href="/" aria-label="Pista Express home">
+              <Wordmark />
+            </Link>
             <p>Hyderabadi Indian kitchen in Midland, Texas.</p>
           </div>
           <address>

@@ -114,14 +114,13 @@ small { font-size: 0.82rem; }
   align-items: center;
   flex: none;
   width: 11.1rem;
+  color: var(--accent);
 }
-.wordmark::before {
-  content: "";
+.wordmark svg {
   display: block;
   width: 100%;
-  aspect-ratio: 921 / 362;
-  background-color: var(--accent);
-  mask: url("/images/pista-express-wordmark.svg") center / contain no-repeat;
+  height: auto;
+  fill: currentColor;
 }
 .desktop-nav { display: flex; align-self: stretch; gap: clamp(1rem, 2.5vw, 2.4rem); }
 
@@ -396,6 +395,9 @@ small { font-size: 0.82rem; }
   .editorial-notes { grid-template-columns: 1fr; }
   .menu-tools { position: static; }
   .menu-section { scroll-margin-top: calc(var(--header-height) + 1rem); }
+}
+@media print {
+  .wordmark { color: var(--brand-black); }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
