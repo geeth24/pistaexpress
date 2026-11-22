@@ -115,7 +115,7 @@ export default function Home() {
               <Link className="text-link" href="/contact">See visit details <ArrowRight aria-hidden="true" /></Link>
             </div>
           </div>
-          <a className="direction-sign" href={restaurant.directions} aria-label="Get directions to 3312 Fortress Drive in Midland">
+          <a className="direction-sign" href={restaurant.directions}>
             <span className="direction-top"><MapPin size={20} aria-hidden="true" /> Midland, TX</span>
             <strong>3312</strong>
             <span>Fortress Drive</span>
