@@ -24,8 +24,7 @@
   --focus: #774411;
   --scrim: rgb(23 25 17 / 0.58);
   --shadow: rgb(25 36 9 / 0.25);
-  --brand-mark-backdrop: transparent;
-  --header-height: 5.6rem;
+  --header-height: 5.15rem;
   --body: var(--body-face), sans-serif;
   --display: var(--display-face), Georgia, serif;
 }
@@ -114,15 +113,15 @@ small { font-size: 0.82rem; }
   display: inline-flex;
   align-items: center;
   flex: none;
-  padding: 0.35rem 0.45rem;
-  overflow: hidden;
-  background: var(--brand-mark-backdrop);
+  width: 11.1rem;
 }
-.wordmark img {
-  width: 12.4rem;
-  height: auto;
-  margin-block: -0.68rem -0.32rem;
-  object-fit: contain;
+.wordmark::before {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 921 / 362;
+  background-color: var(--accent);
+  mask: url("/images/pista-express-wordmark.svg") center / contain no-repeat;
 }
 .desktop-nav { display: flex; align-self: stretch; gap: clamp(1rem, 2.5vw, 2.4rem); }
 
@@ -380,8 +379,8 @@ small { font-size: 0.82rem; }
   .menu-section { scroll-margin-top: calc(var(--header-height) + 9rem); }
 }
 @media (max-width: 760px) {
-  :root { --header-height: 5.15rem; }
-  .wordmark img { width: clamp(9.2rem, 43vw, 10.85rem); margin-block: -0.58rem -0.27rem; }
+  :root { --header-height: 4.65rem; }
+  .wordmark { width: clamp(9.15rem, 42vw, 10rem); }
   .wrap { width: calc(100% - 2rem); }
   .editorial-opening { grid-template-columns: 1fr; align-items: start; }
   .editorial-copy h1 { max-width: 13ch; }

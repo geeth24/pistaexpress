@@ -2,7 +2,6 @@
 
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react"
 import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
@@ -59,9 +58,7 @@ function MobileNavigation({ pathname }: { pathname: string }) {
         <DialogPanel className="mobile-panel" transition>
           <div className="mobile-top">
             <DialogTitle className="sr-only">Pista Express navigation</DialogTitle>
-            <span className="wordmark">
-              <Image src="/PistaExpress.png" alt="" width={1024} height={464} sizes="(max-width: 760px) 174px, 199px" />
-            </span>
+            <span className="wordmark" aria-hidden="true" />
             <button className="icon-button" type="button" aria-label="Close navigation" onClick={() => setOpen(false)}>
               <X aria-hidden="true" />
             </button>
@@ -93,9 +90,7 @@ export function Navbar() {
   return (
     <header className="site-header">
       <div className="wrap header-inner">
-        <Link className="wordmark" href="/" aria-label="Pista Express home">
-          <Image src="/PistaExpress.png" alt="" width={1024} height={464} preload sizes="(max-width: 760px) 174px, 199px" />
-        </Link>
+        <Link className="wordmark" href="/" aria-label="Pista Express home" />
         <nav className="desktop-nav" aria-label="Main navigation">
           {navigation.map(({ href, label }) => (
             <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}>

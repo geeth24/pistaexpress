@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { navigation, restaurant } from "@/lib/restaurant"
 
@@ -9,9 +8,7 @@ export function Footer() {
       <div className="wrap">
         <div className="footer-main">
           <div>
-            <Link className="wordmark" href="/">
-              <Image src="/PistaExpress.png" alt="Pista Express home" width={1024} height={464} sizes="(max-width: 760px) 174px, 199px" />
-            </Link>
+            <Link className="wordmark" href="/" aria-label="Pista Express home" />
             <p>Hyderabadi Indian kitchen in Midland, Texas.</p>
           </div>
           <address>
